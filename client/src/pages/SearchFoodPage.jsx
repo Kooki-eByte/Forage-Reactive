@@ -8,3 +8,4 @@ function SearchFoodPage() {
 }
 
 export default SearchFoodPage
+
