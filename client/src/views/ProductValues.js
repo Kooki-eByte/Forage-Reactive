@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '../components/Typography';
+import Icon from '@material-ui/core/Icon';
+// import { Icon } from '@material-ui/core';
 
 const styles = (theme) => ({
   root: {
@@ -51,11 +53,9 @@ function ProductValues(props) {
         <Grid container spacing={5}>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-              <img
-                className={classes.image}
-                src="/static/themes/onepirate/productValues1.svg"
-                alt="suitcase"
-              />
+              <Icon style={{ fontSize: 40 }}>fastfood</Icon>
+               
+              
               <Typography variant="h6" className={classes.title}>
                 Quickly Build Meal Plans
               </Typography>
@@ -67,11 +67,7 @@ function ProductValues(props) {
           </Grid>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-              <img
-                className={classes.image}
-                src="/static/themes/onepirate/productValues2.svg"
-                alt="graph"
-              />
+            <Icon style={{ fontSize: 40 }}>peopleicon</Icon>
               <Typography variant="h6" className={classes.title}>
                 Socialize with Other Foragers
               </Typography>
@@ -83,11 +79,7 @@ function ProductValues(props) {
           </Grid>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-              <img
-                className={classes.image}
-                src="/static/themes/onepirate/productValues3.svg"
-                alt="clock"
-              />
+            <Icon style={{ fontSize: 40 }}>keyboardicon</Icon>
               <Typography variant="h6" className={classes.title}>
                 Estimate Your Calorie Needs
               </Typography>

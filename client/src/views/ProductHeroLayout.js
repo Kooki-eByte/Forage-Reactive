@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 const styles = (theme) => ({
   root: {
@@ -55,8 +56,8 @@ function ProductHeroLayout(props) {
   return (
     <section className={classes.root}>
       <Container className={classes.container}>
-        <img
-          src="/static/themes/onepirate/productHeroWonder.png"
+       <
+          ArrowDownwardIcon
           alt="wonder"
           width="147"
           height="80"
@@ -64,9 +65,8 @@ function ProductHeroLayout(props) {
         {children}
         <div className={classes.backdrop} />
         <div className={clsx(classes.background, backgroundClassName)} />
-        <img
-          className={classes.arrowDown}
-          src="/static/themes/onepirate/productHeroArrowDown.png"
+        <
+          ArrowDownwardIcon
           height="16"
           width="12"
           alt="arrow down"

@@ -4,10 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '../components/Button';
 import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
-import HomeBackgroundImage from '../images/jakub-kapusnak-sDbj1dFlFPU-unsplash.jpg'
-
-// const backgroundImage =
-//   '../images/jakub-kapusnak-sDbj1dFlFPU-unsplash.jpg';
+import HomeBackgroundImage from '../images/jakub-kapusnak-sDbj1dFlFPU-unsplash.jpg';
+import LargeForageIcon from '../images/Orgtrans.png';
 
 const styles = (theme) => ({
   background: {
