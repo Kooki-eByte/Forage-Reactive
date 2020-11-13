@@ -5,10 +5,12 @@ import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import AppBar from '../components/AppBar';
 import Toolbar, { styles as toolbarStyles } from '../components/Toolbar';
+import MiniForageImage from '../images/Forage.png';
 
 const styles = (theme) => ({
   title: {
     fontSize: 24,
+    color: theme.palette.common.black,
   },
   placeholder: toolbarStyles(theme).root,
   toolbar: {
@@ -18,7 +20,7 @@ const styles = (theme) => ({
     flex: 1,
   },
   leftLinkActive: {
-    color: theme.palette.common.white,
+    color: theme.palette.common.black,
   },
   right: {
     flex: 1,
@@ -27,7 +29,7 @@ const styles = (theme) => ({
   },
   rightLink: {
     fontSize: 16,
-    color: theme.palette.common.white,
+    color: theme.palette.common.black,
     marginLeft: theme.spacing(3),
   },
   linkSecondary: {
@@ -43,6 +45,7 @@ function AppAppBar(props) {
       <AppBar position="fixed">
         <Toolbar className={classes.toolbar}>
           <div className={classes.left} />
+          <img src={MiniForageImage} alt="Forage icon"/>
           <Link
             variant="h6"
             underline="none"
@@ -50,7 +53,7 @@ function AppAppBar(props) {
             className={classes.title}
             href="/premium-themes/onepirate/"
           >
-            {'onepirate'}
+            {'Forage'}
           </Link>
           <div className={classes.right}>
             <Link

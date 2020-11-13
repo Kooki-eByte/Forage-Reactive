@@ -4,13 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '../components/Button';
 import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
-
-const backgroundImage =
-  'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400&q=80';
+import HomeBackgroundImage from '../images/jakub-kapusnak-sDbj1dFlFPU-unsplash.jpg';
+import LargeForageIcon from '../images/Orgtrans.png';
 
 const styles = (theme) => ({
   background: {
-    backgroundImage: `url(${backgroundImage})`,
+    backgroundImage: `url(${HomeBackgroundImage})`,
     backgroundColor: '#7fc7d9', // Average color of the background image.
     backgroundPosition: 'center',
   },
@@ -35,12 +34,12 @@ function ProductHero(props) {
   return (
     <ProductHeroLayout backgroundClassName={classes.background}>
       {/* Increase the network loading priority of the background image. */}
-      <img style={{ display: 'none' }} src={backgroundImage} alt="increase priority" />
+      <img style={{ display: 'none' }} src={HomeBackgroundImage} alt="increase priority" />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        Upgrade your Sundays
+        Forage
       </Typography>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
-        Enjoy secret offers up to -70% off the best luxury hotels every Sunday.
+        A Social Meal Planning Ecosystem
       </Typography>
       <Button
         color="secondary"
@@ -50,10 +49,10 @@ function ProductHero(props) {
         component="a"
         href="/premium-themes/onepirate/sign-up/"
       >
-        Register
+        Sign Up
       </Button>
       <Typography variant="body2" color="inherit" className={classes.more}>
-        Discover the experience
+        Upgrade your lifestyle.. its free!
       </Typography>
     </ProductHeroLayout>
   );
