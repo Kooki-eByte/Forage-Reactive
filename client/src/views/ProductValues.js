@@ -57,11 +57,11 @@ function ProductValues(props) {
                 alt="suitcase"
               />
               <Typography variant="h6" className={classes.title}>
-                The best luxury hotels
+                Quickly Build Meal Plans
               </Typography>
               <Typography variant="h5">
-                {'From the latest trendy boutique hotel to the iconic palace with XXL pool'}
-                {', go for a mini-vacation just a few subway stops away from your home.'}
+                {'Utilize our state of the art web application to search for specific foods or meals in a flash.'}
+                {'Build your own complete meal plans in minutes!'}
               </Typography>
             </div>
           </Grid>
@@ -73,11 +73,11 @@ function ProductValues(props) {
                 alt="graph"
               />
               <Typography variant="h6" className={classes.title}>
-                New experiences
+                Socialize with Other Foragers
               </Typography>
               <Typography variant="h5">
-                {'Privatize a pool, take a Japanese bath or wake up in 900m2 of garden… '}
-                {'your Sundays will not be alike.'}
+                {'Everything is better with others! '}
+                {'Make use of our built in social network to share your meal plans with friends and see how they are using Forage to enhance their lives!'}
               </Typography>
             </div>
           </Grid>
@@ -89,11 +89,11 @@ function ProductValues(props) {
                 alt="clock"
               />
               <Typography variant="h6" className={classes.title}>
-                Exclusive rates
+                Estimate Your Calorie Needs
               </Typography>
               <Typography variant="h5">
-                {'By registering, you will access specially negotiated rates '}
-                {'that you will not find anywhere else.'}
+                {'Knowing where to start with a diet or meal plan is hard. Dont worry, we make it easy. '}
+                {'Enter in your basic information for a quick estimate of your calorie needs based on your goal. You can use your calorie estimate to help guide the formation of your meal plans.'}
               </Typography>
             </div>
           </Grid>
