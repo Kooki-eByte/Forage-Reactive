@@ -6,6 +6,7 @@ import React from "react";
 import AppBar from "../components/AppBar";
 import Toolbar, { styles as toolbarStyles } from "../components/Toolbar";
 import MiniForageImage from "../images/Forage.png";
+import Box from "@material-ui/core/Box";
 
 const styles = (theme) => ({
   title: {
@@ -35,6 +36,9 @@ const styles = (theme) => ({
   linkSecondary: {
     color: theme.palette.secondary.main,
   },
+  miniForage: {
+    marginRight: theme.spacing(2)
+  },
 });
 
 function AppAppBar(props) {
@@ -45,8 +49,13 @@ function AppAppBar(props) {
       <AppBar position="fixed">
         <Toolbar className={classes.toolbar}>
           <div className={classes.left} />
-          <img src={MiniForageImage} alt="Forage icon" />
-          <Link
+          <Box display="flex" flexGrow={500}>
+            <img
+              className={classes.miniForage}
+              src={MiniForageImage}
+              alt="Forage icon"
+            />
+            <Link
             variant="h6"
             underline="none"
             color="inherit"
@@ -55,6 +64,9 @@ function AppAppBar(props) {
           >
             {"Forage"}
           </Link>
+          </Box>
+
+          
           <div className={classes.right}>
             <Link
               color="inherit"
