@@ -8,7 +8,7 @@ import UserPage from "./pages/UserPage";
 function App() {
   return (
     <Router>
-      <div>
+      <div className="App">
         <Switch>
           <Route exact path="/mealPlan" component={MealPlanPage} />
           <Route exact path="/searchFood" component={SearchFoodPage} />
