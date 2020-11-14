@@ -43,11 +43,7 @@ const styles = (theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     zIndex: -2,
-  },
-  arrowDown: {
-    position: 'absolute',
-    bottom: theme.spacing(4),
-  },
+  }
 });
 
 function ProductHeroLayout(props) {
@@ -56,21 +52,9 @@ function ProductHeroLayout(props) {
   return (
     <section className={classes.root}>
       <Container className={classes.container}>
-       <
-          ArrowDownwardIcon
-          alt="wonder"
-          width="147"
-          height="80"
-        />
         {children}
         <div className={classes.backdrop} />
         <div className={clsx(classes.background, backgroundClassName)} />
-        <
-          ArrowDownwardIcon
-          height="16"
-          width="12"
-          alt="arrow down"
-        />
       </Container>
     </section>
   );
