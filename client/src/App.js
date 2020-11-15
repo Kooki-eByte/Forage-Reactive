@@ -12,7 +12,11 @@ function App() {
         <Switch>
           <Route exact path="/mealPlan" component={MealPlanPage} />
           <Route exact path="/searchFood" component={SearchFoodPage} />
-          <Route exact path="/:user" component={UserPage} />
+          <Route
+            exact
+            path="/:user"
+            render={(props) => <UserPage {...props} />}
+          />
           <Route path="/" component={HomePage} />
         </Switch>
       </div>
