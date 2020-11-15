@@ -7,6 +7,7 @@ import AppBar from "../components/AppBar";
 import Toolbar, { styles as toolbarStyles } from "../components/Toolbar";
 import MiniForageImage from "../images/Forage.png";
 import Box from "@material-ui/core/Box";
+import { NavLink } from "react-router-dom";
 
 const styles = (theme) => ({
   title: {
@@ -68,23 +69,31 @@ function AppAppBar(props) {
 
           
           <div className={classes.right}>
+          <NavLink to="/loginPage" className=
+                {window.location.pathname === "/loginPage"
+                  ? "nav-link active"
+                  : "nav-link"}>
             <Link
               color="inherit"
               variant="h6"
               underline="none"
               className={classes.rightLink}
-              href="/premium-themes/onepirate/sign-in/"
             >
               {"Sign In"}
             </Link>
+            </NavLink>
+            <NavLink to="/signUpPage" className=
+                {window.location.pathname === "/signUpPage"
+                  ? "nav-link active"
+                  : "nav-link"}>
             <Link
               variant="h6"
               underline="none"
               className={clsx(classes.rightLink, classes.linkSecondary)}
-              href="/premium-themes/onepirate/sign-up/"
             >
               {"Sign Up"}
             </Link>
+            </NavLink>
           </div>
         </Toolbar>
       </AppBar>

@@ -6,6 +6,7 @@ import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 import HomeBackgroundImage from '../images/jakub-kapusnak-sDbj1dFlFPU-unsplash.jpg';
 import LargeForageIcon from '../images/Orgtrans.png';
+import { NavLink } from "react-router-dom";
 
 const styles = (theme) => ({
 
@@ -44,16 +45,20 @@ function ProductHero(props) {
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
         A Social Meal Planning Ecosystem
       </Typography>
+      <NavLink to="/signUpPage" className=
+                {window.location.pathname === "/signUpPage"
+                  ? "nav-link active"
+                  : "nav-link"}>
       <Button
         color="secondary"
         variant="contained"
         size="large"
         className={classes.button}
         component="a"
-        href="/premium-themes/onepirate/sign-up/"
       >
         Sign Up
       </Button>
+      </NavLink>
       <Typography variant="body2" color="inherit" className={classes.more}>
         Upgrade your lifestyle.. its free!
       </Typography>
