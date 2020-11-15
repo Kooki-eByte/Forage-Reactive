@@ -24,9 +24,6 @@ const styles = (theme) => ({
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
   },
-  buoy: {
-    width: 60,
-  },
 });
 
 function ProductSmokingHero(props) {
