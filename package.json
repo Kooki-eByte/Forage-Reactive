@@ -1,0 +1,32 @@
+{
+  "name": "Forage-Reactive",
+  "version": "1.0.0",
+  "description": "Project 3 .. Forage Reborn to React",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev" : "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kooki-eByte/Forage-Reactive.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kooki-eByte/Forage-Reactive/issues"
+  },
+  "homepage": "https://github.com/Kooki-eByte/Forage-Reactive#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.14",
+    "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  }
+}
