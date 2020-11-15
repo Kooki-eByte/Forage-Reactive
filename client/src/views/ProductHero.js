@@ -6,8 +6,10 @@ import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 import HomeBackgroundImage from '../images/jakub-kapusnak-sDbj1dFlFPU-unsplash.jpg';
 import LargeForageIcon from '../images/Orgtrans.png';
+import { NavLink } from "react-router-dom";
 
 const styles = (theme) => ({
+
   background: {
     backgroundImage: `url(${HomeBackgroundImage})`,
     backgroundColor: '#7fc7d9', // Average color of the background image.
@@ -26,6 +28,10 @@ const styles = (theme) => ({
   more: {
     marginTop: theme.spacing(2),
   },
+  largeForageIcon: {
+    height: "30%",
+    width: "30%"
+  }
 });
 
 function ProductHero(props) {
@@ -35,22 +41,24 @@ function ProductHero(props) {
     <ProductHeroLayout backgroundClassName={classes.background}>
       {/* Increase the network loading priority of the background image. */}
       <img style={{ display: 'none' }} src={HomeBackgroundImage} alt="increase priority" />
-      <Typography color="inherit" align="center" variant="h2" marked="center">
-        Forage
-      </Typography>
+      <img className={classes.largeForageIcon} src={LargeForageIcon} alt="increase priority" />
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
         A Social Meal Planning Ecosystem
       </Typography>
+      <NavLink to="/signUpPage" className=
+                {window.location.pathname === "/signUpPage"
+                  ? "nav-link active"
+                  : "nav-link"}>
       <Button
         color="secondary"
         variant="contained"
         size="large"
         className={classes.button}
         component="a"
-        href="/premium-themes/onepirate/sign-up/"
       >
         Sign Up
       </Button>
+      </NavLink>
       <Typography variant="body2" color="inherit" className={classes.more}>
         Upgrade your lifestyle.. its free!
       </Typography>
