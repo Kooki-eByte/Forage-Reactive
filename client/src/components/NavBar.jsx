@@ -9,8 +9,11 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import KitchenIcon from '@material-ui/icons/Kitchen';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import PeopleIcon from "@material-ui/icons/People";
 import React from 'react';
 import { Link } from "react-router-dom";
+import MiniForageImage from "../images/Forage.png";
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -51,9 +54,13 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  miniForage: {
+    marginRight: theme.spacing(2)
+  },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar(props) {
+  const {user} = props
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -89,7 +96,7 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <Link to="/user">
+      <Link to={`/${user}`}>
         <MenuItem onClick={handleMenuClose}>View Profile</MenuItem>
       </Link>
 
@@ -100,6 +107,7 @@ export default function PrimarySearchAppBar() {
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
+      color="#ffffff"
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={mobileMenuId}
@@ -108,6 +116,14 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <MenuItem>
+        <Link className="link-tag-mini" to="/socialmedia" >
+          <IconButton aria-label="" color="inherit">
+            <PeopleIcon />
+          </IconButton>
+          <p>Foragers</p>
+        </Link>
+      </MenuItem>
       <MenuItem>
         <Link className="link-tag-mini" to="/searchFood">
           <IconButton aria-label="" color="inherit">
@@ -140,20 +156,30 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" color="#ffffff">
         <Toolbar>
+            <img
+              className={classes.miniForage}
+              src={MiniForageImage}
+              alt="Forage icon"
+            />
           <Typography className={classes.title} variant="h6" noWrap>
             Forage
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+            <Link className="link-tag" to="/socialmedia" >
+              <IconButton aria-label="show 4 new mails" color="#000000de">
+                <PeopleIcon />
+              </IconButton>
+            </Link>
             <Link className="link-tag" to="/searchFood" >
-              <IconButton aria-label="show 4 new mails" color="inherit">
+              <IconButton aria-label="show 4 new mails" color="#000000de">
                 <KitchenIcon />
               </IconButton>
             </Link>
             <Link className="link-tag" to="/mealPlan" >
-              <IconButton aria-label="show 17 new notifications" color="inherit">
+              <IconButton aria-label="show 17 new notifications" color="#000000de">
                 <FavoriteIcon />
               </IconButton>
             </Link>
@@ -163,7 +189,7 @@ export default function PrimarySearchAppBar() {
               aria-controls={menuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
-              color="inherit"
+              color="#000000de"
             >
               <AccountCircle />
             </IconButton>
