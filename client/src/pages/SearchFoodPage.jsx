@@ -1,5 +1,7 @@
 import {
   Button,
+  Divider,
+  FormGroup,
   Grid,
   MenuItem,
   TextField,
@@ -36,7 +38,7 @@ function SearchFoodPage() {
       </Typography>
       <Grid container justify="center">
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <form>
+          <FormGroup row={true}>
             <TextField
               id="food-filter"
               select
@@ -44,6 +46,7 @@ function SearchFoodPage() {
               value={filter}
               onChange={handleChange}
               helperText="Please select your filter"
+              margin="dense"
             >
               {filterChoice.map((option) => (
                 <MenuItem key={option} value={option}>
@@ -55,21 +58,23 @@ function SearchFoodPage() {
               id="outlined-basic"
               label="Search Food Here"
               variant="outlined"
+              margin="dense"
+              style={{width:"50%"}}
             />
-          </form>
-          <Button
+            <Button
             onClick={() => {
               alert("clicked");
             }}
-          >
-            Click me
-          </Button>
+            >
+              Click me
+            </Button>
+          </FormGroup>
+          
         </Grid>
-        <Grid item xs={12} sm={3} md={2} lg={3}>
-            {fakeData.map(data => (
-                <DisplayFood key={data.id} {...data}/>
-            ))}
-        </Grid>
+        <Divider/>
+          {fakeData.map(data => (
+              <DisplayFood key={data.id} {...data}/>
+          ))}
       </Grid>
     </React.Fragment>
   );
