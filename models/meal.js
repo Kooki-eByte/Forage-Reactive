@@ -6,7 +6,7 @@ const MealSchema = new Schema({
     type: String,
     name: String,
     img: String,
-    ingredients: Text,
+    ingredients: String,
     servings: Number,
     calories: Number,
     user: { type: Schema.Types.ObjectId, ref: 'User'}
