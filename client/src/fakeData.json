@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "type": "lunch",
+        "name": "CheeseBurger",
+        "image": "https://webstockreview.net/images/cheeseburger-clipart-transparent-background-6.png",
+        "ingredients": ["bread", "burger", "lettuce", "cheese", "pickles", "tomato"],
+        "servings": 319,
+        "calories": 303
+    },
+    {
+        "id": 2,
+        "type": "breakfast",
+        "name": "cereal",
+        "image": "https://webstockreview.net/images/cheeseburger-clipart-transparent-background-6.png",
+        "ingredients": ["bread", "burger", "lettuce", "cheese", "pickles", "tomato"],
+        "servings": 319,
+        "calories": 303
+    },
+    {
+        "id": 3,
+        "type": "snack",
+        "name": "Cookies",
+        "image": "https://webstockreview.net/images/cheeseburger-clipart-transparent-background-6.png",
+        "ingredients": ["bread", "burger", "lettuce", "cheese", "pickles", "tomato"],
+        "servings": 319,
+        "calories": 303
+    },
+    {
+        "id": 4,
+        "type": "dinner",
+        "name": "Rice and Chicken",
+        "image": "https://webstockreview.net/images/cheeseburger-clipart-transparent-background-6.png",
+        "ingredients": ["bread", "burger", "lettuce", "cheese", "pickles", "tomato"],
+        "servings": 319,
+        "calories": 303
+    }
+]
