@@ -6,8 +6,8 @@ const passport = require('./passport');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const routeOne = require("./route.js");
-const routeTwo = require("./routes")
+const authRoutes = require("./routes/route");
+const routes = require("./routes")
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -25,8 +25,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/user', routeOne);
-app.use(routeTwo);
+app.use('/user', authRoutes);
+app.use(routes);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
