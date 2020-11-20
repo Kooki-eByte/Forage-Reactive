@@ -7,7 +7,6 @@ import DisplayFood from "../components/DisplayFood"
 function MealPlanPage() {
     // TODO - On click ask the db for that specific type of the food. (i.e. click lunch will only show the type of food the user saved that was labeled as a type to lunch per the users choice)
 
-
     return (
         <React.Fragment>
             <NavTabs />
