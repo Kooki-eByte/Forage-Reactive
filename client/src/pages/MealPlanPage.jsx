@@ -1,7 +1,6 @@
 import React from "react"
 import {Button, Grid, Typography} from "@material-ui/core"
 import NavTabs from "../components/NavBar"
-import fakeData from "../fakeData.json"
 import DisplayFood from "../components/DisplayFood"
 
 function MealPlanPage() {
@@ -9,7 +8,6 @@ function MealPlanPage() {
 
     return (
         <React.Fragment>
-            <NavTabs />
             <Typography variant="h2" style={{ textAlign: "center" }}>
                 Your Meal Plan 🗓
             </Typography>
@@ -35,9 +33,6 @@ function MealPlanPage() {
                         alert("Snack");
                     }}>Snack</Button>
                 </Grid>
-                {fakeData.map(data => (
-                    <DisplayFood key={data.id} {...data}/>
-                ))}
             </Grid>
         </React.Fragment>
         
