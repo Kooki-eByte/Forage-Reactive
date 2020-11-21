@@ -1,16 +1,14 @@
 import React from "react";
 import axios from 'axios';
-import { Route, withRouter  } from 'react-router-dom';
+import { Route, withRouter, Switch  } from 'react-router-dom';
 import HomePage from "./pages/HomePage";
-// import MealPlanPage from "./pages/MealPlanPage";
-// import SearchFoodPage from "./pages/SearchFoodPage";
-// import UserPage from "./pages/UserPage";
-// import SignUpPage from "./pages/SignUpPage";
-// import LoginPage from "./pages/LoginPage";
-import UserPage from './components/Usertest'
-import Navbar from './components/Navbartest'
-import LoginPage from './components/Logintest'
-import SignUpPage from './components/Signuptest'
+import MealPlanPage from "./pages/MealPlanPage";
+import SearchFoodPage from "./pages/SearchFoodPage";
+import UserPage from "./pages/UserPage";
+import SignUpPage from "./pages/SignUpPage";
+import LoginPage from "./pages/LoginPage";
+import Navbar from './components/NavBar';
+
 
 class App extends React.Component {
   state = {
@@ -104,6 +102,24 @@ class App extends React.Component {
         <Route path="/:user" render={() => <UserPage isLoggedIn={this.state.isLoggedIn} username={this.state.username} />} />
       </div>
     );
+return (
+    
+      <div className="App">
+        <Switch>
+          <Route exact path="/loginPage" component={LoginPage} />
+          <Route exact path="/signUpPage" component={SignUpPage} />
+          <Route exact path="/mealPlan" component={MealPlanPage} />
+          <Route exact path="/searchFood" component={SearchFoodPage} />
+          <Route
+            exact
+            path="/:user"
+            render={(props) => <UserPage {...props} />}
+          />
+          <Route path="/" component={HomePage} />
+        </Switch>
+      </div>
+  
+)
   };
 };
 

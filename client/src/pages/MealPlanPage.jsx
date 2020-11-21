@@ -1,7 +1,6 @@
 import React from "react"
 import { Button, Grid, Typography } from "@material-ui/core"
 import NavTabs from "../components/NavBar"
-import fakeData from "../fakeData.json"
 import DisplayFood from "../components/DisplayFood"
 
 function MealPlanPage() {

@@ -32,9 +32,9 @@ function SearchFoodPage() {
     getFood();
   }, []);
 
-  async function getFood() {
-    await API.getAPIFood(filter, searchFood)
-      .then((res) => console.log(res.data))
+  function getFood() {
+    API.getAPIFood(filter, searchFood)
+      .then((res) => console.log(res))
       .catch((err) => console.log(err))
   }
 
