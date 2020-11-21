@@ -19,7 +19,7 @@ import AppAppBar from '../views/AppAppBar';
 function Index() {
   return (
     <React.Fragment>
-      <AppAppBar />
+      {/* <AppAppBar /> */}
       <ProductHero />
       <ProductValues />
       <ProductSmokingHero />
