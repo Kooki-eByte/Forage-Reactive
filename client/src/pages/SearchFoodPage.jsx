@@ -32,9 +32,9 @@ function SearchFoodPage() {
     getFood();
   }, []);
 
-  async function getFood() {
-    await API.getAPIFood(filter, searchFood)
-      .then((res) => console.log(res.data))
+  function getFood() {
+    API.getAPIFood(filter, searchFood)
+      .then((res) => console.log(res))
       .catch((err) => console.log(err))
   }
 
@@ -44,7 +44,6 @@ function SearchFoodPage() {
 
   return (
     <React.Fragment>
-      <NavTabs />
       <Typography variant="h2" style={{ textAlign: "center" }}>
         Food Search 🍗
       </Typography>

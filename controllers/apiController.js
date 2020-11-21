@@ -5,7 +5,10 @@ module.exports = {
         let food = req.params.food;
         let diet = req.params.diet;
         let apiID = process.env.API_ID;
+        console.log("apiID", apiID)
         let apiKey = process.env.API_KEY;
+        console.log("apiKey", apiKey)
+
         if (req.params.diet != "No-Diet") {
           axios
             .get(

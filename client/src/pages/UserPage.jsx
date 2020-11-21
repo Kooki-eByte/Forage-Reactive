@@ -32,7 +32,6 @@ function UserPage(props) {
     const classes = useStyles() 
     return (
         <React.Fragment>
-            <NavTabs user={user}/>
             <Typography variant="h2" style={{textAlign:"center"}}>
                 Hello, {user}
             </Typography>
