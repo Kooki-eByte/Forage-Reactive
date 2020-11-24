@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Project 3 .. Forage Reborn to React",
   "main": "server.js",
-  "proxy": "http://localhost:5000/",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -29,6 +28,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
     "mongoose": "^5.10.14",
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",

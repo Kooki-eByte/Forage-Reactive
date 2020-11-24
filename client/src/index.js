@@ -6,11 +6,6 @@ import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
-ReactDOM.render(
-	<BrowserRouter>
-		<App />
-	</BrowserRouter>,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"))
 
 reportWebVitals();

@@ -1,43 +1,125 @@
-const mongoose = require('mongoose');
-const User = require('../models/user');
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs")
+const jwtDecode = require("jwt-decode")
+const { getPersonByEmail } = require("../database/queries/user")
+const { emailIsValid } = require("../util/validemail")
 
-exports.getCurrentUser = (req, res) => {
-  console.log('current user: ', req.user);
-  if (req.user) {
-    res.json({ user: req.user });
-  } else {
-    res.json({ user: null });
-  };
-};
-
-exports.checkAlreadyRegistered = async (req, res, next) => {
-  const { username } = req.body;
-  const registered = await User.find({ username });
-  if (registered[0] && registered[0]._id) {
-    res.json({ error: `Sorry, already a user with the username: ${username}` });
-    return;
-  }
-  next();
+const createToken = (user) => {
+  // Sign the JWT 
+  return jwt.sign(
+    {
+      sub: user.id,
+      email: user.email,
+    },
+    process.env.JWT_SECRET,
+    { algorithm: "HS256", expiresIn: "1h" }
+  )
 }
 
-exports.registerUser = async (req, res, next) => {
-  const { username, password } = req.body;
-  await (new User({ username, password })).save();
-  next();
-};
+const hashPassword = (password) => {
+  return new Promise((resolve, reject) => {
+    // Generate a salt at level 12 strength
+    bcrypt.genSalt(12, (err, salt) => {
+      if (err) {
+        reject(err)
+      }
+      bcrypt.hash(password, salt, (err, hash) => {
+        if (err) {
+          reject(err)
+        }
+        resolve(hash)
+      })
+    })
+  })
+}
 
-exports.login = (req, res) => {
-  req.login(req.user, function(err) {
-    if (err) { res.json({ error: err }); }
-    return res.send(req.user);
-  });
-};
+const verifyPassword = (passwordAttempt, hashedPassword) => {
+  return bcrypt.compare(passwordAttempt, hashedPassword)
+}
 
-exports.logout = (req, res) => {
-  if (req.user) {
-    req.logout();
-    res.send({ msg: 'logged out' });
-  } else {
-    res.send({ msg: 'no user to log out' })
-  };
-};
+/**
+ * Does something
+ * @author Dan Kaltenbaugh <d.a.kaltenbaugh@gmail.com>
+ * @version 1.0.0
+ * @param
+ * @description
+ * @module
+ * @throws Will throw an error if thed
+ * @returns {object} Either the ___ object, null or an Error
+ * @todo complete this JSDoc entry
+ */
+const passwordActions = async (req, res, next) => {
+  const { action } = req.query
+  switch (action) {
+    case "reset": {
+      try {
+        const { email } = req.body
+        if (!emailIsValid(email)) {
+          // TODO - System Log Call here
+          return res.status(422).json({ message: `Invalid email ${email}` })
+        }
+        return findPerson(email).then(async (user) => {})
+        // findPerson .catch will Hoist to the try... catch level automatically
+      } catch (err) {
+        // TODO - Add system log call here
+        return res.status(400).json({ message: `Unknown password ${action} error` })
+      }
+    }
+  }
+}
+
+/**
+ * Does something
+ * @author Dan Kaltenbaugh <d.a.kaltenbaugh@gmail.com>
+ * @version 1.0.0
+ * @param
+ * @description
+ * @module
+ * @throws Will throw an error if the
+ * @returns {object} Either the ___ object, null or an Error
+ * @todo complete this JSDoc entry
+ */
+const authPerson = async (req, res) => {
+  console.log("authPerson -> req.body ", req.body)
+  try {
+    const { email, password } = req.body
+    const person = await getPersonByEmail(email)
+
+    if (!person) {
+      return res.status(403).json({ message: "Wrong email or password." })
+    }
+
+    const passwordValid = await verifyPassword(password, person.password)
+    console.log("authPerson -> passwordValid", passwordValid)
+
+    if (passwordValid) {
+      const { password, bio, ...rest } = person
+      const userInfo = Object.assign({}, { ...rest })
+      const token = createToken(person)
+
+      const decodedToken = jwtDecode(token)
+      const expiresAt = decodedToken.exp
+
+      res.status(200).json({
+        token,
+        expiresAt,
+        userInfo,
+        message: "Successful authentication!",
+      })
+    } else {
+      res.status(403).json({
+        message: "Wrong email or password.",
+      })
+    }
+  } catch (error) {
+    return res.status(400).json(error)
+  }
+}
+
+module.exports = {
+  authPerson,
+  createToken,
+  hashPassword,
+  passwordActions, 
+  verifyPassword,
+}

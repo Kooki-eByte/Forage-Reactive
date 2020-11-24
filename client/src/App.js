@@ -1,113 +1,53 @@
-import React from "react";
-import axios from 'axios';
-import { Route, withRouter, Switch  } from 'react-router-dom';
+import React, { useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+
+import { AuthProvider, AuthContext } from "./context/AuthContext";
+import Shell from "./Shell";
+
+import FourZeroFour from "./pages/FourZeroFour";
 import HomePage from "./pages/HomePage";
 import MealPlanPage from "./pages/MealPlanPage";
 import SearchFoodPage from "./pages/SearchFoodPage";
 import UserPage from "./pages/UserPage";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
-import Navbar from './components/NavBar';
 
+const UnauthenticatedRoutes = () => (
+  <>
+    <Switch>
+      <Route exact path="/loginPage" component={LoginPage} />
+      <Route exact path="/signUpPage" component={SignUpPage} />
+      <Route path="/" component={HomePage} />
+      <Route path="*">
+        <FourZeroFour />
+      </Route>
+    </Switch>
+  </>
+);
 
-class App extends React.Component {
-  state = {
-    isLoggedIn: false,
-    username: null,
-    password: null,
-  };
-
-  componentDidMount() {
-    this.getUser();
-  }
-
-  updateUser = (updatedProp, update) => {
-    this.setState(prevState => ({ ...prevState, [updatedProp]: update }));
-  }
-
-  getUser = () => {
-    axios.get('/user/').then(response => {
-      if (response.data.user) {
-        this.setState({
-          isLoggedIn: true,
-          username: response.data.user.username
-        });
-      } else {
-        this.setState({
-          isLoggedIn: false,
-          username: null
-        });
+const AuthenticatedRoute = ({ children, ...rest }) => {
+  const auth = useContext(AuthContext);
+  return (
+    <Route
+      {...rest}
+      render={() =>
+        auth.isAuthenticated() ? <Shell>{children}</Shell> : <Redirect to="/" />
       }
-    });
-  }
+    ></Route>
+  );
+};
 
-  register = async () => {
-		const { username, password } = this.state;
-		let response = await axios.post('/user/register', { username, password });
-		if (response.status === 200) {
-			this.setState({ isLoggedIn: true });
-      this.props.history.push("/");
-		} else {
-			console.log('signup error');
-		}
-	}
-
-  login = async () => {
-    const { username, password } = this.state;
-    let response = await axios.post('/user/login/', { username, password });
-    if (response.status === 200) {
-      this.setState({ isLoggedIn: true });
-      this.props.history.push("/");
-    } else {
-      console.log('login error');
-    }
-  }
-
-  logout = () => {
-    axios.post('/user/logout').then(response => {
-      if (response.status === 200) {
-        this.setState({
-          isLoggedIn: false,
-          username: null,
-          password: null
-        });
-        this.props.history.push("/");
-      }
-    }).catch(error => {
-      console.log('logout error', error);
-    });
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <Navbar isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
-        <Route exact path="/" render={() => <HomePage isLoggedIn={this.state.isLoggedIn} username={this.state.username} />} />
-        <Route path="/loginPage" render={() => (
-          <LoginPage 
-            username={this.state.username} 
-            password={this.state.password}
-            updateUser={this.updateUser} 
-            login={this.login} 
-          />
-        )} />
-        <Route path="/signUpPage" render={() => (
-          <SignUpPage 
-            username={this.state.username} 
-            password={this.state.password}
-            updateUser={this.updateUser} 
-            register={this.register}
-          />
-        )} />
-        <Route path="/:user" render={() => <UserPage isLoggedIn={this.state.isLoggedIn} username={this.state.username} />} />
-      </div>
-    );
-return (
-    
-      <div className="App">
-        <Switch>
-          <Route exact path="/loginPage" component={LoginPage} />
-          <Route exact path="/signUpPage" component={SignUpPage} />
+const AppRoutes = () => {
+  return (
+    <>
+      <Switch>
+        <UnauthenticatedRoutes />
+        <AuthenticatedRoute>
           <Route exact path="/mealPlan" component={MealPlanPage} />
           <Route exact path="/searchFood" component={SearchFoodPage} />
           <Route
@@ -115,13 +55,43 @@ return (
             path="/:user"
             render={(props) => <UserPage {...props} />}
           />
-          <Route path="/" component={HomePage} />
-        </Switch>
-      </div>
-  
-)
-  };
+        </AuthenticatedRoute>
+      </Switch>
+    </>
+  );
 };
 
+const App = () => {
+  return (
+    <React.Fragment>
+      <Router>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </Router>
+    </React.Fragment>
+  );
+};
 
-export default withRouter(App);
+// function App() {
+//   return (
+//     <Router>
+//       <div className='App'>
+//         <Switch>
+//           <Route exact path='/loginPage' component={LoginPage} />
+//           <Route exact path='/signUpPage' component={SignUpPage} />
+//           <Route exact path='/mealPlan' component={MealPlanPage} />
+//           <Route exact path='/searchFood' component={SearchFoodPage} />
+//           <Route
+//             exact
+//             path='/:user'
+//             render={(props) => <UserPage {...props} />}
+//           />
+//           <Route path='/' component={HomePage} />
+//         </Switch>
+//       </div>
+//     </Router>
+//   );
+// }
+
+export default App;

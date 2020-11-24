@@ -44,57 +44,51 @@ function SearchFoodPage() {
 
   return (
     <React.Fragment>
-      {this.props.isLoggedIn ? (
-        <React.Fragment>
-          <NavTabs />
-          <Typography variant="h2" style={{ textAlign: "center" }}>
-            Food Search 🍗
+      <NavTabs />
+      <Typography variant="h2" style={{ textAlign: "center" }}>
+        Food Search 🍗
       </Typography>
-          <Grid container alignContent="center" justify="space-around" alignItems="baseline">
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <FormGroup row={true}>
-                <TextField
-                  id="food-filter"
-                  select
-                  label="Filter"
-                  value={filter}
-                  onChange={handleChange}
-                  helperText="Please select your filter"
-                  margin="dense"
-                >
-                  {filterChoice.map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {option}
-                    </MenuItem>
-                  ))}
-                </TextField>
-                <TextField
-                  id="outlined-basic"
-                  label="Search Food Here"
-                  variant="outlined"
-                  margin="dense"
-                  style={{ width: "50%" }}
-                />
-                <Button
-                  onClick={() => {
-                    setSearchFood("steak")
-                  }}
-                >
-                  Forage
+      <Grid container alignContent="center" justify="space-around" alignItems="baseline">
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <FormGroup row={true}>
+            <TextField
+              id="food-filter"
+              select
+              label="Filter"
+              value={filter}
+              onChange={handleChange}
+              helperText="Please select your filter"
+              margin="dense"
+            >
+              {filterChoice.map((option) => (
+                <MenuItem key={option} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField
+              id="outlined-basic"
+              label="Search Food Here"
+              variant="outlined"
+              margin="dense"
+              style={{ width: "50%" }}
+            />
+            <Button
+              onClick={() => {
+                setSearchFood("steak")
+              }}
+            >
+              Forage
             </Button>
-              </FormGroup>
-            </Grid>
-            <Divider />
-            {meals.length &&
-              meals.map(meal => (
-                <DisplayFood key={meal.id} {...meal} />
-              ))
-            }
-          </Grid>
-        </React.Fragment>
-      ) : (
-          <p>Error: This page is for logged in users only!</p>
-        )}
+          </FormGroup>
+        </Grid>
+        <Divider />
+        {meals.length &&
+          meals.map(meal => (
+            <DisplayFood key={meal.id} {...meal} />
+          ))
+        }
+      </Grid>
     </React.Fragment>
   );
 }

@@ -32,49 +32,42 @@ function UserPage(props) {
     const classes = useStyles()
     return (
         <React.Fragment>
-            {this.props.isLoggedIn ? (
-                <React.Fragment>
-                    <NavTabs user={user} />
-                    <Typography variant="h2" style={{ textAlign: "center" }}>
-                        Hello, {user}
-                    </Typography>
-                    <Grid container className={classes.containerInfo}>
-                        <Grid item xs={12} sm={6} md={4} lg={3}>
-                            <UsersCard user={user} />
-                        </Grid>
-                        <Grid item xs={12} sm={4} md={4} lg={3}>
-                            <CardContent className={classes.userCard}>
-                                <KitchenIcon style={{ fontSize: 75 }} />
-                                <br />
-                                <Typography>This is the <strong>Search Food</strong> Icon. In this page you can <em>Forage</em> for food by searching the food of choice in the search bar. Then you are able to either store the food in breakfast, lunch, dinner, or even snack.</Typography>
-                            </CardContent>
-                        </Grid>
-                        <Grid item xs={12} sm={4} md={4} lg={3}>
-                            <CardContent className={classes.userCard}>
-                                <FavoriteIcon style={{ fontSize: 75 }} />
-                                <br />
-                                <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis enim nam, neque quis dignissimos delectus, tenetur quia libero, consequatur nihil aperiam veritatis illo ad quos repellendus facere pariatur excepturi voluptatum.</Typography>
-                            </CardContent>
-                        </Grid>
-                        <Grid item xs={12} sm={4} md={4} lg={3}>
-                            <CardContent className={classes.userCard}>
-                                <AccountCircle style={{ fontSize: 75 }} />
-                                <br />
-                                <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo eum suscipit voluptate voluptates praesentium quisquam quaerat vel assumenda saepe modi! Possimus minima ab eum voluptates harum, dignissimos necessitatibus veniam asperiores.</Typography>
-                            </CardContent>
-                        </Grid>
-                        {/* - TODO : Have a card for calorie calc */}
+            <NavTabs user={user} />
+            <Typography variant="h2" style={{ textAlign: "center" }}>
+                Hello, {user}
+            </Typography>
+            <Grid container className={classes.containerInfo}>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
+                    <UsersCard user={user} />
+                </Grid>
+                <Grid item xs={12} sm={4} md={4} lg={3}>
+                    <CardContent className={classes.userCard}>
+                        <KitchenIcon style={{ fontSize: 75 }} />
+                        <br />
+                        <Typography>This is the <strong>Search Food</strong> Icon. In this page you can <em>Forage</em> for food by searching the food of choice in the search bar. Then you are able to either store the food in breakfast, lunch, dinner, or even snack.</Typography>
+                    </CardContent>
+                </Grid>
+                <Grid item xs={12} sm={4} md={4} lg={3}>
+                    <CardContent className={classes.userCard}>
+                        <FavoriteIcon style={{ fontSize: 75 }} />
+                        <br />
+                        <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis enim nam, neque quis dignissimos delectus, tenetur quia libero, consequatur nihil aperiam veritatis illo ad quos repellendus facere pariatur excepturi voluptatum.</Typography>
+                    </CardContent>
+                </Grid>
+                <Grid item xs={12} sm={4} md={4} lg={3}>
+                    <CardContent className={classes.userCard}>
+                        <AccountCircle style={{ fontSize: 75 }} />
+                        <br />
+                        <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo eum suscipit voluptate voluptates praesentium quisquam quaerat vel assumenda saepe modi! Possimus minima ab eum voluptates harum, dignissimos necessitatibus veniam asperiores.</Typography>
+                    </CardContent>
+                </Grid>
+                {/* - TODO : Have a card for calorie calc */}
 
-                        {/* - TODO : Have a chart for food that is being stored */}
-                        {/* <Grid item xs={4} >
+                {/* - TODO : Have a chart for food that is being stored */}
+                {/* <Grid item xs={4} >
                     <Chart />
                 </Grid> */}
-                    </Grid>
-                </React.Fragment>
-            ) : (
-                    <p>Error: This page is for logged in users only!</p>
-                )}
-
+            </Grid>
         </React.Fragment>
     )
 }
