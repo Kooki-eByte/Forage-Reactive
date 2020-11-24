@@ -1,5 +1,5 @@
 import React from "react"
-import {Button, Grid, Typography} from "@material-ui/core"
+import { Button, Grid, Typography } from "@material-ui/core"
 import NavTabs from "../components/NavBar"
 import DisplayFood from "../components/DisplayFood"
 
@@ -8,10 +8,11 @@ function MealPlanPage() {
 
     return (
         <React.Fragment>
+            <NavTabs />
             <Typography variant="h2" style={{ textAlign: "center" }}>
                 Your Meal Plan 🗓
             </Typography>
-            <Grid container alignContent="center" justify="space-around" style={{textAlign:"center"}}>
+            <Grid container alignContent="center" justify="space-around" style={{ textAlign: "center" }}>
                 <Grid item xs={6} sm={6} md={3} lg={3}>
                     <Button onClick={() => {
                         alert("Breakfast");
@@ -33,9 +34,10 @@ function MealPlanPage() {
                         alert("Snack");
                     }}>Snack</Button>
                 </Grid>
+
             </Grid>
         </React.Fragment>
-        
+
     )
 }
 

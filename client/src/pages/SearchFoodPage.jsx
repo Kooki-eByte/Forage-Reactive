@@ -7,7 +7,7 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import NavTabs from "../components/NavBar";
 import DisplayFood from "../components/DisplayFood"
 import API from "../utils/API"
@@ -20,7 +20,7 @@ const filterChoice = [
   "Tree-Nuts-Free",
   "Peanuts-Free",
 ];
- 
+
 
 function SearchFoodPage() {
 
@@ -44,6 +44,7 @@ function SearchFoodPage() {
 
   return (
     <React.Fragment>
+      <NavTabs />
       <Typography variant="h2" style={{ textAlign: "center" }}>
         Food Search 🍗
       </Typography>
@@ -70,23 +71,23 @@ function SearchFoodPage() {
               label="Search Food Here"
               variant="outlined"
               margin="dense"
-              style={{width:"50%"}}
+              style={{ width: "50%" }}
             />
             <Button
-            onClick={() => {
-              setSearchFood("steak")
-            }}
+              onClick={() => {
+                setSearchFood("steak")
+              }}
             >
               Forage
             </Button>
-          </FormGroup> 
+          </FormGroup>
         </Grid>
-        <Divider/>
-          {meals.length && 
-            meals.map(meal => (
-              <DisplayFood key={meal.id} {...meal}/>
-            ))
-          }
+        <Divider />
+        {meals.length &&
+          meals.map(meal => (
+            <DisplayFood key={meal.id} {...meal} />
+          ))
+        }
       </Grid>
     </React.Fragment>
   );
