@@ -33,6 +33,9 @@ const styles = (theme) => ({
     fontSize: 16,
     color: theme.palette.common.black,
     marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
+    display: "flex",
+    justifyContent: "flex-end",
   },
   linkSecondary: {
     color: theme.palette.secondary.main,

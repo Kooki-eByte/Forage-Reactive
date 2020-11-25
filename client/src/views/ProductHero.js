@@ -29,8 +29,10 @@ const styles = (theme) => ({
     marginTop: theme.spacing(2),
   },
   largeForageIcon: {
-    height: "30%",
-    width: "30%"
+    height: '30%',
+    width: '30%', 
+    marginTop: '150px',
+    marginBottom: 'auto',
   }
 });
 
