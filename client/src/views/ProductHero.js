@@ -7,6 +7,7 @@ import ProductHeroLayout from './ProductHeroLayout';
 import HomeBackgroundImage from '../images/jakub-kapusnak-sDbj1dFlFPU-unsplash.jpg';
 import LargeForageIcon from '../images/Orgtrans.png';
 import { NavLink } from "react-router-dom";
+import { Container, Grid } from '@material-ui/core';
 
 const styles = (theme) => ({
 
@@ -31,7 +32,7 @@ const styles = (theme) => ({
   largeForageIcon: {
     height: '30%',
     width: '30%', 
-    marginTop: '150px',
+    marginTop: '50px',
     marginBottom: 'auto',
   }
 });
@@ -40,10 +41,17 @@ function ProductHero(props) {
   const { classes } = props;
 
   return (
+    <Grid
+    container
+    direction="column"
+    justify="center" 
+    >
     <ProductHeroLayout backgroundClassName={classes.background}>
       {/* Increase the network loading priority of the background image. */}
       <img style={{ display: 'none' }} src={HomeBackgroundImage} alt="increase priority" />
+      <Grid item xl={10} lg={8} md={12} sm={12} xs={12} align="center">
       <img className={classes.largeForageIcon} src={LargeForageIcon} alt="increase priority" />
+      </Grid>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
         A Social Meal Planning Ecosystem
       </Typography>
@@ -65,6 +73,7 @@ function ProductHero(props) {
         Upgrade your lifestyle.. its free!
       </Typography>
     </ProductHeroLayout>
+    </Grid>
   );
 }
 
