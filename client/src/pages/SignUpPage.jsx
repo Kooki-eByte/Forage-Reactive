@@ -13,6 +13,7 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { Field, Form, Formik } from "formik";
 import { fieldToTextField, TextField } from "formik-material-ui";
 import React from "react";
+import API from "../utils/user-api";
 
 function Copyright() {
   return (
@@ -34,6 +35,16 @@ function UpperCasingTextField(props) {
   } = props;
 
   return <MuiTextField {...fieldToTextField(props)} />;
+}
+
+async function postUser(user) {
+  await API.createUser(user)
+    .then((res) => {
+      console.log(`user has been saved to the database : ${res}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -89,7 +100,10 @@ export default function SignUp() {
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               setSubmitting(false);
-              alert(JSON.stringify(values, null, 2));
+              // values sends a object of the username, email, and password
+              console.log(values);
+              postUser(values);
+              // alert(JSON.stringify(values, null, 2));
             }, 500);
           }}
         >
