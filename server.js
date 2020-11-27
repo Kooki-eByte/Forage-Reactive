@@ -1,23 +1,26 @@
-require('dotenv').config()
+require("dotenv").config();
 const express = require("express");
-const dbConnection = require('./database') ;
+const dbConnection = require("./database");
+const logger = require("morgan");
 // const passport = require('./passport');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 const authRoutes = require("./routes/route");
-const routes = require("./routes")
+const routes = require("./routes");
 
+// Logs the actions taking place in server-side for routes
+app.use(logger("dev"));
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-dbConnection
+dbConnection;
 
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-app.use('/user', authRoutes);
+app.use("/user", authRoutes);
 app.use(routes);
 
 // Serve up static assets (usually on heroku)
@@ -26,6 +29,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Start the API server
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`API Server now listening on PORT ${PORT}!`);
 });
