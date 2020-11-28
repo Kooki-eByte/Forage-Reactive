@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import CuttingBrdImg from '../images/lukas-blazek-f-TWhXOrLiU-unsplash.jpg'
 
 import { axiosHTTP } from "../utils/axiosHTTP"
 import { Redirect } from "react-router-dom"

@@ -36,6 +36,7 @@ const styles = (theme) => ({
     marginRight: theme.spacing(3),
     display: "flex",
     justifyContent: "flex-end",
+    whiteSpace: "nowrap"
   },
   linkSecondary: {
     color: theme.palette.secondary.main,
