@@ -7,6 +7,7 @@ import Typography from '../components/Typography';
 import Icon from '@material-ui/core/Icon';
 
 
+
 const styles = (theme) => ({
   root: {
     display: 'flex',
@@ -32,11 +33,6 @@ const styles = (theme) => ({
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(5),
   },
-  curvyLines: {
-    pointerEvents: 'none',
-    position: 'absolute',
-    top: -180,
-  },
 });
 
 function ProductValues(props) {
@@ -45,15 +41,10 @@ function ProductValues(props) {
   return (
     <section className={classes.root}>
       <Container className={classes.container}>
-        <img
-          src="/static/themes/onepirate/productCurvyLines.png"
-          className={classes.curvyLines}
-          alt="curvy lines"
-        />
         <Grid container spacing={5}>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-              <Icon style={{ fontSize: 40 }}>fastfood</Icon>
+              <Icon style={{ fontSize: 40, color: "red" }}>fastfood</Icon>
                
               
               <Typography variant="h5" className={classes.title} align="center">
@@ -67,7 +58,7 @@ function ProductValues(props) {
           </Grid>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-            <Icon style={{ fontSize: 40 }}>peopleicon</Icon>
+            <Icon style={{ fontSize: 40, color: "red" }}>peopleicon</Icon>
               <Typography variant="h5" className={classes.title} align="center">
                 Socialize with Other Foragers
               </Typography>
@@ -79,7 +70,7 @@ function ProductValues(props) {
           </Grid>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-            <Icon style={{ fontSize: 40 }}>keyboardicon</Icon>
+            <Icon style={{ fontSize: 40, color: "red" }}>keyboardicon</Icon>
               <Typography variant="h5" className={classes.title} align="center">
                 Estimate Your Calorie Needs
               </Typography>

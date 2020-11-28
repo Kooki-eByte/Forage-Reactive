@@ -49,7 +49,7 @@ function ProductHero(props) {
     <ProductHeroLayout backgroundClassName={classes.background}>
       {/* Increase the network loading priority of the background image. */}
       <img style={{ display: 'none' }} src={HomeBackgroundImage} alt="increase priority" />
-      <Grid item xl={10} lg={8} md={12} sm={12} xs={12} align="center">
+      <Grid item xl={10} lg={8} md={8} sm={12} xs={12} align="center">
       <img className={classes.largeForageIcon} src={LargeForageIcon} alt="increase priority" />
       </Grid>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
