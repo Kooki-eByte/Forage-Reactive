@@ -1,34 +1,32 @@
-import React, { useContext, useState } from "react"
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-
-import { axiosHTTP } from "../utils/axiosHTTP"
-import { Redirect } from "react-router-dom"
-
-import { AuthContext } from "../context/AuthContext"
-import FormError from "./../components/FormError"
-import FormSuccess from "./../components/FormSuccess"
+import Avatar from "@material-ui/core/Avatar";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import Checkbox from "@material-ui/core/Checkbox";
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Grid from "@material-ui/core/Grid";
+import Link from "@material-ui/core/Link";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import React, { useContext, useState } from "react";
+import { Redirect } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { axiosHTTP } from "../utils/axiosHTTP";
+import FormError from "./../components/FormError";
+import FormSuccess from "./../components/FormSuccess";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         Your Website
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
@@ -36,16 +34,16 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -55,41 +53,42 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-  const authContext = useContext(AuthContext)
-  const [signInSuccess, setSignInSuccess] = useState()
-  const [signInError, setSignInError] = useState()
-  const [redirectOnSignIn, setRedirectOnSignIn] = useState(false)
-  const [signInLoading, setSignInLoading] = useState(false)
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [remember, setRemember] = useState(false)
+  const authContext = useContext(AuthContext);
+  const [signInSuccess, setSignInSuccess] = useState();
+  const [signInError, setSignInError] = useState();
+  const [redirectOnSignIn, setRedirectOnSignIn] = useState(false);
+  const [signInLoading, setSignInLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
 
   const submitCredentials = async (credentials) => {
     try {
-      setSignInLoading(true)
+      setSignInLoading(true);
 
-      const { data } = await axiosHTTP.post(`auth`, credentials)
+      const { data } = await axiosHTTP.post(`auth`, credentials);
+      console.log("AxiosHTTP data", data);
 
-      authContext.setAuthState(data)
-      setSignInSuccess(data.message)
-      setSignInError(null)
+      authContext.setAuthState(data);
+      setSignInSuccess(data.message);
+      setSignInError(null);
 
       setTimeout(() => {
-        setRedirectOnSignIn(true)
-      }, 700)
+        setRedirectOnSignIn(true);
+      }, 700);
     } catch (error) {
-      setSignInLoading(false)
-      const data = error.response
-      setSignInError(error.message)
-      setSignInSuccess(null)
+      setSignInLoading(false);
+      const data = error.response;
+      setSignInError(error.message);
+      setSignInSuccess(null);
     }
-  }
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    submitCredentials({ email, password })
-  }
+    submitCredentials({ email, password });
+  };
 
   return (
     <>
@@ -102,7 +101,7 @@ export default function SignIn() {
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
-        </Typography>
+          </Typography>
           {signInSuccess && <FormSuccess text={signInSuccess} />}
           {signInError && <FormError text={signInError} />}
           <form className={classes.form} noValidate onSubmit={handleSubmit}>
@@ -131,7 +130,13 @@ export default function SignIn() {
               autoComplete="current-password"
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" onChange={(e) => setRemember(e.target.checked)} />}
+              control={
+                <Checkbox
+                  value="remember"
+                  color="primary"
+                  onChange={(e) => setRemember(e.target.checked)}
+                />
+              }
               label="Remember me"
             />
             <Button
@@ -142,12 +147,12 @@ export default function SignIn() {
               className={classes.submit}
             >
               Sign In
-          </Button>
+            </Button>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
-              </Link>
+                </Link>
               </Grid>
               <Grid item>
                 <Link href="#" variant="body2">
