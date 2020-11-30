@@ -22,8 +22,12 @@ const useStyles = makeStyles({
   },
 });
 
-// TODO : Have a function to call the DB and get the username of the user and display that as user here..
 function UserPage() {
+  /*
+    @ getUserName function
+    @ returns : a string of the username (the username stored in userInfo
+      from the authentication implemented)
+  */
   function getUserName() {
     let values = JSON.parse(localStorage.getItem("userInfo"));
     values = values._doc.username;
