@@ -5,11 +5,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import DynamicFeedOutlinedIcon from "@material-ui/icons/DynamicFeedOutlined";
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import KitchenIcon from "@material-ui/icons/Kitchen";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import PeopleIcon from "@material-ui/icons/People";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import MiniForageImage from "../images/Forage.png";
@@ -129,7 +129,7 @@ export default function PrimarySearchAppBar(props) {
       <MenuItem>
         <Link className="link-tag-mini" to="/socialmedia">
           <IconButton aria-label="" color="inherit">
-            <PeopleIcon />
+            <DynamicFeedOutlinedIcon />
           </IconButton>
           <p>Foragers</p>
         </Link>
@@ -145,7 +145,7 @@ export default function PrimarySearchAppBar(props) {
       <MenuItem>
         <Link className="link-tag-mini" to="/mealPlan">
           <IconButton aria-label="" color="inherit">
-            <FavoriteIcon />
+            <FavoriteBorderOutlinedIcon />
           </IconButton>
           <p>Display Food</p>
         </Link>
@@ -157,7 +157,7 @@ export default function PrimarySearchAppBar(props) {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <AccountCircleOutlinedIcon />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -180,7 +180,7 @@ export default function PrimarySearchAppBar(props) {
           <div className={classes.sectionDesktop}>
             <Link className="link-tag" to="/socialmedia">
               <IconButton aria-label="show 4 new mails" color="#000000de">
-                <PeopleIcon />
+                <DynamicFeedOutlinedIcon />
               </IconButton>
             </Link>
             <Link className="link-tag" to="/searchFood">
@@ -193,7 +193,7 @@ export default function PrimarySearchAppBar(props) {
                 aria-label="show 17 new notifications"
                 color="#000000de"
               >
-                <FavoriteIcon />
+                <FavoriteBorderOutlinedIcon />
               </IconButton>
             </Link>
             <IconButton
@@ -204,7 +204,7 @@ export default function PrimarySearchAppBar(props) {
               onClick={handleProfileMenuOpen}
               color="#000000de"
             >
-              <AccountCircle />
+              <AccountCircleOutlinedIcon />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
