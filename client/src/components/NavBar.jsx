@@ -10,9 +10,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import KitchenIcon from '@material-ui/icons/Kitchen';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import PeopleIcon from "@material-ui/icons/People";
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from "react-router-dom";
 import MiniForageImage from "../images/Forage.png";
+import { AuthContext } from "./../context/AuthContext"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -68,6 +69,8 @@ export default function PrimarySearchAppBar(props) {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  const auth = useContext(AuthContext)
+
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -79,6 +82,7 @@ export default function PrimarySearchAppBar(props) {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
+    auth.logout()
   };
 
   const handleMobileMenuOpen = (event) => {
