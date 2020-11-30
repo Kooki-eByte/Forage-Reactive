@@ -6,40 +6,35 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DisplayFood from "../components/DisplayFood";
 import NavTabs from "../components/NavBar";
 import API from "../utils/API";
 
 const filterChoice = [
   "No-Diet",
-  "Vegetarian",
-  "Vegan",
-  "Alcohol-Free",
-  "Tree-Nuts-Free",
-  "Peanuts-Free",
+  "vegetarian",
+  "vegan",
+  "alcohol-free",
+  "tree-nut-free",
+  "peanut-free",
 ];
 
 function SearchFoodPage() {
   const [filter, setFilter] = useState(filterChoice[0]);
   const [meals, setMeals] = useState([]);
-  const [searchFood, setSearchFood] = useState("pizza");
   const [inputValue, setInputValue] = useState("");
 
-  useEffect(() => {
-    getFood(filter, inputValue);
-  }, [searchFood]);
-
   // Used to console log the data coming back from the api whenever the data does end up coming back
-  useEffect(() => {
-    console.log(meals);
-  }, [meals]);
+  // useEffect(() => {
+  //   console.log(meals);
+  // }, [meals]);
 
   async function getFood(diet, food) {
     await API.getAPIFood(diet, food)
       .then((res) => {
         // Goes into the data and grabs the array of foods
-        const foods = res.data.hits;
+        let foods = res.data.hits;
         setMeals(foods);
       })
       .catch((err) => console.log(err));
@@ -89,7 +84,7 @@ function SearchFoodPage() {
             />
             <Button
               onClick={() => {
-                setSearchFood(filter, inputValue);
+                getFood(filter, inputValue);
               }}
             >
               Forage
