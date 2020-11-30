@@ -18,9 +18,15 @@ import Shell from "./Shell";
 const UnauthenticatedRoutes = () => (
   <>
     <Switch>
-      <Route exact path="/loginPage" component={LoginPage} />
-      <Route exact path="/signUpPage" component={SignUpPage} />
-      <Route path="/" component={HomePage} />
+      <Route exact path="/loginPage">
+        <LoginPage />
+      </Route>
+      <Route exact path="/signUpPage">
+        <SignUpPage />
+      </Route>
+      <Route path="/">
+        <HomePage />
+      </Route>
       <Route path="*">
         <FourZeroFour />
       </Route>
@@ -34,7 +40,7 @@ const AuthenticatedRoute = ({ children, ...rest }) => {
     <Route
       {...rest}
       render={() =>
-        auth.isAuthenticated() ? <Shell>{children}</Shell> : <Redirect to="/" />
+        auth.isAuthenticated() ? <Shell>{children}</Shell> : <UnauthenticatedRoutes/>
       }
     ></Route>
   );
@@ -60,6 +66,7 @@ const AppRoutes = () => {
             path="/:user"
             render={(props) => <UserPage {...props} />}
           /> */}
+        <UnauthenticatedRoutes />
       </Switch>
     </>
   );
