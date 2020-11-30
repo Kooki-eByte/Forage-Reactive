@@ -1,10 +1,5 @@
 import React, { useContext } from "react";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AuthContext, AuthProvider } from "./context/AuthContext";
 import FourZeroFour from "./pages/FourZeroFour";
 import HomePage from "./pages/HomePage";
@@ -40,7 +35,11 @@ const AuthenticatedRoute = ({ children, ...rest }) => {
     <Route
       {...rest}
       render={() =>
-        auth.isAuthenticated() ? <Shell>{children}</Shell> : <UnauthenticatedRoutes/>
+        auth.isAuthenticated() ? (
+          <Shell>{children}</Shell>
+        ) : (
+          <UnauthenticatedRoutes />
+        )
       }
     ></Route>
   );
@@ -59,13 +58,6 @@ const AppRoutes = () => {
         <AuthenticatedRoute path="/:user">
           <UserPage />
         </AuthenticatedRoute>
-        {/* <Route exact path="/mealPlan" component={MealPlanPage} />
-          <Route exact path="/searchFood" component={SearchFoodPage} />
-          <Route
-            exact
-            path="/:user"
-            render={(props) => <UserPage {...props} />}
-          /> */}
         <UnauthenticatedRoutes />
       </Switch>
     </>
@@ -83,26 +75,5 @@ const App = () => {
     </React.Fragment>
   );
 };
-
-// function App() {
-//   return (
-//     <Router>
-//       <div className='App'>
-//         <Switch>
-//           <Route exact path='/loginPage' component={LoginPage} />
-//           <Route exact path='/signUpPage' component={SignUpPage} />
-//           <Route exact path='/mealPlan' component={MealPlanPage} />
-//           <Route exact path='/searchFood' component={SearchFoodPage} />
-//           <Route
-//             exact
-//             path='/:user'
-//             render={(props) => <UserPage {...props} />}
-//           />
-//           <Route path='/' component={HomePage} />
-//         </Switch>
-//       </div>
-//     </Router>
-//   );
-// }
 
 export default App;

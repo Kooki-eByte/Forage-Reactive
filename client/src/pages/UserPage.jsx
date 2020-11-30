@@ -24,11 +24,6 @@ const useStyles = makeStyles({
 
 // TODO : Have a function to call the DB and get the username of the user and display that as user here..
 function UserPage() {
-  // This grabs the username from the parameter thats passed from the app.js
-  // const { match } = props
-  // const { params } = match
-  // const { user } = params
-
   const classes = useStyles();
   return (
     <React.Fragment>
