@@ -9,7 +9,7 @@ module.exports = {
       password: req.body.password,
     })
       .then(() => {
-        res.redirect(307, "/user");
+        return res.status(200).send("Good request");
       })
       .catch((err) => {
         res.status(401).json(err);

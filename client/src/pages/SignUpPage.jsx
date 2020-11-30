@@ -40,7 +40,8 @@ function UpperCasingTextField(props) {
 async function postUser(user) {
   await API.createUser(user)
     .then((res) => {
-      console.log(`user has been saved to the database : ${res}`);
+      let currentUrl = window.location.origin;
+      window.location.href = `${currentUrl}/${user.username}`;
     })
     .catch((err) => {
       console.log(err);

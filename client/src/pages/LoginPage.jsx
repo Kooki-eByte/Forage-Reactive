@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -15,40 +14,17 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React, { useContext, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { axiosHTTP } from "../utils/axiosHTTP";
+// import { axiosHTTP } from "../utils/axiosHTTP";
+import API from "../utils/user-api";
 import FormError from "./../components/FormError";
 import FormSuccess from "./../components/FormSuccess";
-=======
-import React, { useContext, useState } from "react"
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import CuttingBrdImg from '../images/lukas-blazek-f-TWhXOrLiU-unsplash.jpg'
-
-import { axiosHTTP } from "../utils/axiosHTTP"
-import { Redirect } from "react-router-dom"
-
-import { AuthContext } from "../context/AuthContext"
-import FormError from "./../components/FormError"
-import FormSuccess from "./../components/FormSuccess"
->>>>>>> 98d57e2afc10f6fed4a2ea57f676de0d5aae6836
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Forage
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -91,7 +67,7 @@ export default function SignIn() {
     try {
       setSignInLoading(true);
 
-      const { data } = await axiosHTTP.post(`auth`, credentials);
+      const { data } = await API.createAuth(credentials);
       console.log("AxiosHTTP data", data);
 
       authContext.setAuthState(data);
