@@ -9,18 +9,20 @@ const PORT = process.env.PORT || 5000;
 const authRoutes = require("./routes/route");
 const routes = require("./routes");
 
+const cookieParser = require("cookie-parser");
+
 // Logs the actions taking place in server-side for routes
 app.use(logger("dev"));
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(cookieParser());
 dbConnection;
 
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-app.use("/user", authRoutes);
+app.use("/auth", authRoutes);
 app.use(routes);
 
 // Serve up static assets (usually on heroku)

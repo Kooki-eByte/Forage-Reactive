@@ -1,4 +1,4 @@
-const { User } = require("../models/user")
+const db = require("../models");
 
 /**
  * Gets Person info based on their email address.
@@ -15,14 +15,22 @@ const { User } = require("../models/user")
  * @todo Write the auto hashing Password into the Sequelize Person Model
  */
 const getPersonByEmail = async (email) => {
+  console.log("getPersonByEmail query: ", email);
   try {
-    const user = await User.findOne({ where: { email }, raw: true })
-    return user
+    const user = await db.User.findOne(
+      { email: email },
+      function (err, userEmail) {
+        if (err) throw err;
+        console.log(userEmail);
+        return userEmail;
+      }
+    );
+    return user;
   } catch (error) {
-    return error
+    return error;
   }
-}
+};
 
 module.exports = {
   getPersonByEmail,
-}
+};
