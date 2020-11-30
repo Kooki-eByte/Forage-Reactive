@@ -1,7 +1,7 @@
 import { CardContent, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import KitchenIcon from "@material-ui/icons/Kitchen";
 import React from "react";
 import NavTabs from "../components/NavBar";
@@ -24,16 +24,24 @@ const useStyles = makeStyles({
 
 // TODO : Have a function to call the DB and get the username of the user and display that as user here..
 function UserPage() {
+  function getUserName() {
+    let values = JSON.parse(localStorage.getItem("userInfo"));
+    values = values._doc.username;
+
+    return values;
+  }
+
+  const user = getUserName();
   const classes = useStyles();
   return (
     <React.Fragment>
-      <NavTabs user="user" />
+      <NavTabs user={user} />
       <Typography variant="h2" style={{ textAlign: "center" }}>
-        Hello, user
+        Hello, {user}
       </Typography>
       <Grid container className={classes.containerInfo}>
         <Grid item xs={12} sm={6} md={4} lg={3}>
-          <UsersCard user="user" />
+          <UsersCard user={user} />
         </Grid>
         <Grid item xs={12} sm={4} md={4} lg={3}>
           <CardContent className={classes.userCard}>
@@ -49,7 +57,7 @@ function UserPage() {
         </Grid>
         <Grid item xs={12} sm={4} md={4} lg={3}>
           <CardContent className={classes.userCard}>
-            <FavoriteIcon style={{ fontSize: 75 }} />
+            <FavoriteBorderOutlinedIcon style={{ fontSize: 75 }} />
             <br />
             <Typography>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -61,7 +69,7 @@ function UserPage() {
         </Grid>
         <Grid item xs={12} sm={4} md={4} lg={3}>
           <CardContent className={classes.userCard}>
-            <AccountCircle style={{ fontSize: 75 }} />
+            <AccountCircleOutlinedIcon style={{ fontSize: 75 }} />
             <br />
             <Typography>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
