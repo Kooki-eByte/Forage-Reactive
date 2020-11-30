@@ -14,7 +14,6 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React, { useContext, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-// import { axiosHTTP } from "../utils/axiosHTTP";
 import API from "../utils/user-api";
 import FormError from "./../components/FormError";
 import FormSuccess from "./../components/FormSuccess";
@@ -68,7 +67,6 @@ export default function SignIn() {
       setSignInLoading(true);
 
       const { data } = await API.createAuth(credentials);
-      console.log("AxiosHTTP data", data);
 
       authContext.setAuthState(data);
       setSignInSuccess(data.message);
@@ -93,7 +91,7 @@ export default function SignIn() {
 
   return (
     <>
-      {redirectOnSignIn && <Redirect to="/:user" />}
+      {redirectOnSignIn && <Redirect to={`/${email}`} />}
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>

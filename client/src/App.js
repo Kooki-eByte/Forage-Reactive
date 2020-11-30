@@ -1,21 +1,19 @@
 import React, { useContext } from "react";
 import {
   BrowserRouter as Router,
+  Redirect,
   Route,
   Switch,
-  Redirect,
 } from "react-router-dom";
-
-import { AuthProvider, AuthContext } from "./context/AuthContext";
-import Shell from "./Shell";
-
+import { AuthContext, AuthProvider } from "./context/AuthContext";
 import FourZeroFour from "./pages/FourZeroFour";
 import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
 import MealPlanPage from "./pages/MealPlanPage";
 import SearchFoodPage from "./pages/SearchFoodPage";
-import UserPage from "./pages/UserPage";
 import SignUpPage from "./pages/SignUpPage";
-import LoginPage from "./pages/LoginPage";
+import UserPage from "./pages/UserPage";
+import Shell from "./Shell";
 
 const UnauthenticatedRoutes = () => (
   <>
@@ -46,16 +44,22 @@ const AppRoutes = () => {
   return (
     <>
       <Switch>
-        <UnauthenticatedRoutes />
-        <AuthenticatedRoute>
-          <Route exact path="/mealPlan" component={MealPlanPage} />
+        <AuthenticatedRoute path="/mealPlan">
+          <MealPlanPage />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute path="/searchFood">
+          <SearchFoodPage />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute path="/:user">
+          <UserPage />
+        </AuthenticatedRoute>
+        {/* <Route exact path="/mealPlan" component={MealPlanPage} />
           <Route exact path="/searchFood" component={SearchFoodPage} />
           <Route
             exact
             path="/:user"
             render={(props) => <UserPage {...props} />}
-          />
-        </AuthenticatedRoute>
+          /> */}
       </Switch>
     </>
   );

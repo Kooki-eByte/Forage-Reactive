@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import DisplayFood from "../components/DisplayFood";
+import NavTabs from "../components/NavBar";
 import API from "../utils/API";
 
 const filterChoice = [
@@ -50,6 +51,7 @@ function SearchFoodPage() {
 
   return (
     <React.Fragment>
+      <NavTabs user="user" />
       <Typography variant="h2" style={{ textAlign: "center" }}>
         Food Search 🍗
       </Typography>
