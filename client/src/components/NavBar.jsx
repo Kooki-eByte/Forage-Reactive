@@ -1,20 +1,19 @@
-import AppBar from '@material-ui/core/AppBar';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import { makeStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import KitchenIcon from '@material-ui/icons/Kitchen';
-import MoreIcon from '@material-ui/icons/MoreVert';
+import AppBar from "@material-ui/core/AppBar";
+import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import { makeStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import KitchenIcon from "@material-ui/icons/Kitchen";
+import MoreIcon from "@material-ui/icons/MoreVert";
 import PeopleIcon from "@material-ui/icons/People";
-import React, {useContext} from 'react';
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import MiniForageImage from "../images/Forage.png";
-import { AuthContext } from "./../context/AuthContext"
-
+import { AuthContext } from "./../context/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -24,44 +23,44 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "block",
     },
-    textAlign: 'center',
+    textAlign: "center",
   },
   inputRoot: {
-    color: 'inherit',
+    color: "inherit",
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "20ch",
     },
   },
   sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
     },
   },
   sectionMobile: {
-    display: 'flex',
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
+    display: "flex",
+    [theme.breakpoints.up("md")]: {
+      display: "none",
     },
   },
   miniForage: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
 }));
 
 export default function PrimarySearchAppBar(props) {
-  const {user} = props
+  const { user } = props;
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -69,7 +68,7 @@ export default function PrimarySearchAppBar(props) {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const auth = useContext(AuthContext)
+  const auth = useContext(AuthContext);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -79,49 +78,56 @@ export default function PrimarySearchAppBar(props) {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClose = (event) => {
+    let menuSelected = event.target.value;
     setAnchorEl(null);
     handleMobileMenuClose();
-    auth.logout()
+    if (menuSelected === 0) {
+      auth.logout();
+    }
   };
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const menuId = 'primary-search-account-menu';
+  const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
       id={menuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
       <Link to={`/${user}`}>
-        <MenuItem onClick={handleMenuClose}>View Profile</MenuItem>
+        <MenuItem value="1" onClick={(event) => handleMenuClose(event)}>
+          View Profile
+        </MenuItem>
       </Link>
 
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <MenuItem value="0" onClick={(event) => handleMenuClose(event)}>
+        Logout
+      </MenuItem>
     </Menu>
   );
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
       color="#ffffff"
       anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <Link className="link-tag-mini" to="/socialmedia" >
+        <Link className="link-tag-mini" to="/socialmedia">
           <IconButton aria-label="" color="inherit">
             <PeopleIcon />
           </IconButton>
@@ -137,7 +143,7 @@ export default function PrimarySearchAppBar(props) {
         </Link>
       </MenuItem>
       <MenuItem>
-        <Link className="link-tag-mini" to="/mealPlan" >
+        <Link className="link-tag-mini" to="/mealPlan">
           <IconButton aria-label="" color="inherit">
             <FavoriteIcon />
           </IconButton>
@@ -162,28 +168,31 @@ export default function PrimarySearchAppBar(props) {
     <div className={classes.grow}>
       <AppBar position="static" color="#ffffff">
         <Toolbar>
-            <img
-              className={classes.miniForage}
-              src={MiniForageImage}
-              alt="Forage icon"
-            />
+          <img
+            className={classes.miniForage}
+            src={MiniForageImage}
+            alt="Forage icon"
+          />
           <Typography className={classes.title} variant="h6" noWrap>
             Forage
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Link className="link-tag" to="/socialmedia" >
+            <Link className="link-tag" to="/socialmedia">
               <IconButton aria-label="show 4 new mails" color="#000000de">
                 <PeopleIcon />
               </IconButton>
             </Link>
-            <Link className="link-tag" to="/searchFood" >
+            <Link className="link-tag" to="/searchFood">
               <IconButton aria-label="show 4 new mails" color="#000000de">
                 <KitchenIcon />
               </IconButton>
             </Link>
-            <Link className="link-tag" to="/mealPlan" >
-              <IconButton aria-label="show 17 new notifications" color="#000000de">
+            <Link className="link-tag" to="/mealPlan">
+              <IconButton
+                aria-label="show 17 new notifications"
+                color="#000000de"
+              >
                 <FavoriteIcon />
               </IconButton>
             </Link>
@@ -214,4 +223,5 @@ export default function PrimarySearchAppBar(props) {
       {renderMobileMenu}
       {renderMenu}
     </div>
-  )}
+  );
+}
