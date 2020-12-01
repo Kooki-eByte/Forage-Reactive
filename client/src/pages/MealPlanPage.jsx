@@ -2,7 +2,6 @@ import { Button, Grid, Typography } from "@material-ui/core";
 import React from "react";
 import axios from 'axios';
 import NavTabs from "../components/NavBar";
-import DisplayFood from "../components/DisplayFood";
 
 function MealPlanPage() {
   // TODO - On click ask the db for that specific type of the food. (i.e. click lunch will only show the type of food the user saved that was labeled as a type to lunch per the users choice)
