@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const dbConnection = require("./database");
 const logger = require("morgan");
-// const passport = require('./passport');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
