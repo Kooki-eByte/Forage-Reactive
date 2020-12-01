@@ -40,13 +40,22 @@ function SearchFoodPage() {
       .catch((err) => console.log(err));
   }
 
+  function getUserName() {
+    let values = JSON.parse(localStorage.getItem("userInfo"));
+    values = values._doc.username;
+
+    return values;
+  }
+
+  const user = getUserName();
+
   const handleChange = (event) => {
     setFilter(event.target.value);
   };
 
   return (
     <React.Fragment>
-      <NavTabs user="user" />
+      <NavTabs user={user} />
       <Typography variant="h2" style={{ textAlign: "center" }}>
         Food Search 🍗
       </Typography>
