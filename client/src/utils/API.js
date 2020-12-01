@@ -10,15 +10,15 @@ export default {
     return axios.get("/api/foods/" + id);
   },
 
-  getAPIFood: function(diet, food) {
-    return axios.get("/api/getfoods/" + diet + "/" + food) 
+  getAPIFood: function (diet, food) {
+    return axios.get("/api/getfoods/" + diet + "/" + food);
   },
 
   deleteFood: function (id) {
-    return axios.delete("/api/foods/" + id);
+    return axios.delete("/api/meals/" + id);
   },
 
   saveFood: function (foodData) {
-    return axios.post("/api/foods", foodData);
+    return axios.post("/api/meals", foodData);
   },
 };

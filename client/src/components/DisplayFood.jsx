@@ -11,11 +11,11 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import Fab from "@material-ui/core/Fab";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
 import clsx from "clsx";
 import React from "react";
+import API from "../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,6 +55,28 @@ function DisplayFood({ recipe }) {
     setExpanded(!expanded);
   };
 
+  async function handleSaveFood(category) {
+    let foodData = {
+      type: category,
+      name: foodName,
+      img: image,
+      ingredients: ingredientLines,
+      servings: Math.ceil(calories),
+      calories: servings,
+    };
+    // async function to call the create method to save to the specific meal. Give it the meals info and the specific category.
+    await API.saveFood(foodData)
+      .then((res) => {
+        // return with a promise of res or err
+        // if res then have a snackbar show up for success
+        console.log(res.data);
+      })
+      .catch((err) => {
+        // else err with have err snack bar with the error message on there
+        alert("failed to save to database", err);
+      });
+  }
+
   return (
     <React.Fragment>
       <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -68,13 +90,40 @@ function DisplayFood({ recipe }) {
               The Servings for {foodName} is : {servings}.
             </Typography>
           </CardContent>
+          Click to save to a category:
           <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
+            <Fab
+              style={{ fontSize: "20px", margin: "2px" }}
+              color="primary"
+              aria-label="breakfast"
+              onClick={() => handleSaveFood("breakfast")}
+            >
+              B
+            </Fab>
+            <Fab
+              style={{ fontSize: "20px", margin: "2px" }}
+              color="primary"
+              aria-label="lunch"
+              onClick={() => handleSaveFood("lunch")}
+            >
+              L
+            </Fab>
+            <Fab
+              style={{ fontSize: "20px", margin: "2px" }}
+              color="primary"
+              aria-label="dinner"
+              onClick={() => handleSaveFood("dinner")}
+            >
+              D
+            </Fab>
+            <Fab
+              style={{ fontSize: "20px", margin: "2px" }}
+              color="primary"
+              aria-label="snack"
+              onClick={() => handleSaveFood("snack")}
+            >
+              S
+            </Fab>
             <IconButton
               className={clsx(classes.expand, {
                 [classes.expandOpen]: expanded,
