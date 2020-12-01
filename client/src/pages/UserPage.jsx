@@ -65,10 +65,7 @@ function UserPage() {
             <FavoriteBorderOutlinedIcon style={{ fontSize: 75 }} />
             <br />
             <Typography>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reiciendis enim nam, neque quis dignissimos delectus, tenetur quia
-              libero, consequatur nihil aperiam veritatis illo ad quos
-              repellendus facere pariatur excepturi voluptatum.
+              This is the <strong>Meal Plan</strong> Icon. On this page you can select a Meal type and display your saved meals and recipes.
             </Typography>
           </CardContent>
         </Grid>
@@ -77,10 +74,7 @@ function UserPage() {
             <AccountCircleOutlinedIcon style={{ fontSize: 75 }} />
             <br />
             <Typography>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-              eum suscipit voluptate voluptates praesentium quisquam quaerat vel
-              assumenda saepe modi! Possimus minima ab eum voluptates harum,
-              dignissimos necessitatibus veniam asperiores.
+              This is the <strong>User</strong> Icon. This is your personal user page where you will see your calorie needs, and other information.
             </Typography>
           </CardContent>
         </Grid>
