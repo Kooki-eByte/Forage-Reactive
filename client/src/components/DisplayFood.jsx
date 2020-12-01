@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function DisplayFood({ recipe, userId, handleSuccess, handleError }) {
+function DisplayFood({ recipe, userId, handleSuccess, handleError, pageSent }) {
   const {
     label: foodName,
     image,
