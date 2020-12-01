@@ -20,6 +20,7 @@ module.exports = {
       ingredients: req.body.ingredients,
       servings: req.body.servings,
       calories: req.body.calories,
+      user: req.body.user,
     })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));

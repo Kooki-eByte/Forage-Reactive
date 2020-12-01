@@ -19,9 +19,6 @@ app.use(express.json());
 app.use(cookieParser());
 dbConnection;
 
-// app.use(passport.initialize());
-// app.use(passport.session());
-
 app.use("/auth", authRoutes);
 app.use(routes);
 

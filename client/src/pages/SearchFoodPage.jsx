@@ -47,8 +47,15 @@ function SearchFoodPage() {
     return values;
   }
 
-  const user = getUserName();
+  function getUserId() {
+    let userId = JSON.parse(localStorage.getItem("userInfo"));
+    userId = userId._doc._id;
 
+    return userId;
+  }
+
+  const user = getUserName();
+  const userId = getUserId();
   const handleChange = (event) => {
     setFilter(event.target.value);
   };
@@ -102,7 +109,13 @@ function SearchFoodPage() {
         </Grid>
         {meals ? (
           meals.map((meal) => {
-            return <DisplayFood key={meals.indexOf(meal)} {...meal} />;
+            return (
+              <DisplayFood
+                key={meals.indexOf(meal)}
+                {...meal}
+                userId={userId}
+              />
+            );
           })
         ) : (
           <h3>No foods to display</h3>

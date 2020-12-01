@@ -36,6 +36,7 @@ function UserPage() {
   }
 
   const user = getUserName();
+
   const classes = useStyles();
   return (
     <React.Fragment>
