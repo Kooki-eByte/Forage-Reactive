@@ -1,9 +1,21 @@
 import { Button, Grid, Typography } from "@material-ui/core";
 import React from "react";
+import axios from 'axios';
 import NavTabs from "../components/NavBar";
+import DisplayFood from "../components/DisplayFood";
 
 function MealPlanPage() {
   // TODO - On click ask the db for that specific type of the food. (i.e. click lunch will only show the type of food the user saved that was labeled as a type to lunch per the users choice)
+
+  async function getMeals() {
+    await axios.get('/api/meals').then((response)=>{
+      const data = response.data
+      console.log('Data received')
+      console.log(data)
+    }).catch((err) => console.log(err));
+  }
+
+  getMeals()
 
   function getUserName() {
     let values = JSON.parse(localStorage.getItem("userInfo"));
