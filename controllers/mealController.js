@@ -7,13 +7,13 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  findById: function (req, res) {
-    db.Meal.findById(req.params.id)
+  findByUserId: function (req, res) {
+    db.Meal.find({ user: req.params.user_id })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
   findByType: function (req, res) {
-    db.Meal.findById(req.params.type)
+    db.Meal.find({ user: req.params.user_id, type: req.params.type })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
@@ -25,7 +25,7 @@ module.exports = {
       ingredients: req.body.ingredients,
       servings: req.body.servings,
       calories: req.body.calories,
-      user: req.body.user
+      user: req.body.user,
     })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));

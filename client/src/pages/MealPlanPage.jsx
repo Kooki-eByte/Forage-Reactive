@@ -1,20 +1,12 @@
 import { Button, Grid, Typography } from "@material-ui/core";
-import React from "react";
-import axios from 'axios';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import DisplayMealPlan from "../components/DisplayMealPlan";
 import NavTabs from "../components/NavBar";
+import API from "../utils/API";
 
 function MealPlanPage() {
-  // TODO - On click ask the db for that specific type of the food. (i.e. click lunch will only show the type of food the user saved that was labeled as a type to lunch per the users choice)
-
-  async function getMeals() {
-    await axios.get('/api/meals').then((response)=>{
-      const data = response.data
-      console.log('Data received')
-      console.log(data)
-    }).catch((err) => console.log(err));
-  }
-
-  getMeals()
+  const [foodData, setFoodData] = useState([]);
 
   function getUserName() {
     let values = JSON.parse(localStorage.getItem("userInfo"));
@@ -32,6 +24,34 @@ function MealPlanPage() {
 
   const user = getUserName();
   const userId = getUserId();
+
+  async function getMeals() {
+    await axios
+      .get("/api/meals/" + userId)
+      .then((response) => {
+        const data = response.data;
+        setFoodData(data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  async function getMealsByType(userId, type) {
+    await API.getMealByType(userId, type)
+      .then((res) => {
+        const data = res.data;
+        setFoodData(data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    getMeals();
+  }, []);
+
+  useEffect(() => {
+    console.log(foodData);
+  }, [foodData]);
+
   return (
     <React.Fragment>
       <NavTabs user={user} />
@@ -47,7 +67,7 @@ function MealPlanPage() {
         <Grid item xs={6} sm={6} md={3} lg={3}>
           <Button
             onClick={() => {
-              alert("Breakfast");
+              getMealsByType(userId, "breakfast");
             }}
           >
             Breakfast
@@ -56,7 +76,7 @@ function MealPlanPage() {
         <Grid item xs={6} sm={6} md={3} lg={3}>
           <Button
             onClick={() => {
-              alert("Lunch");
+              getMealsByType(userId, "lunch");
             }}
           >
             Lunch
@@ -65,7 +85,7 @@ function MealPlanPage() {
         <Grid item xs={6} sm={6} md={3} lg={3}>
           <Button
             onClick={() => {
-              alert("Dinner");
+              getMealsByType(userId, "dinner");
             }}
           >
             Dinner
@@ -74,12 +94,22 @@ function MealPlanPage() {
         <Grid item xs={6} sm={6} md={3} lg={3}>
           <Button
             onClick={() => {
-              alert("Snack");
+              getMealsByType(userId, "snack");
             }}
           >
             Snack
           </Button>
         </Grid>
+        {foodData ? (
+          foodData.map((food) => {
+            return <DisplayMealPlan key={foodData.indexOf(food)} {...food} />;
+          })
+        ) : (
+          <h3>
+            No foods to display, Go check out the food search to forage for
+            some.
+          </h3>
+        )}
       </Grid>
     </React.Fragment>
   );

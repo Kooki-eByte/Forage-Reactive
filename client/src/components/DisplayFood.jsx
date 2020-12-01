@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function DisplayFood({ recipe, userId }) {
+function DisplayFood({ recipe, userId, handleSuccess, handleError, pageSent }) {
   const {
     label: foodName,
     image,
@@ -70,11 +70,12 @@ function DisplayFood({ recipe, userId }) {
       .then((res) => {
         // return with a promise of res or err
         // if res then have a snackbar show up for success
-        console.log(res.data);
+        handleSuccess();
       })
       .catch((err) => {
         // else err with have err snack bar with the error message on there
-        alert("failed to save to database", err);
+        console.log("failed to save to database", err);
+        handleError();
       });
   }
 

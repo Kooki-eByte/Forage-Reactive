@@ -6,10 +6,16 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import React, { useState } from "react";
 import DisplayFood from "../components/DisplayFood";
 import NavTabs from "../components/NavBar";
 import API from "../utils/API";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const filterChoice = [
   "No-Diet",
@@ -24,6 +30,25 @@ function SearchFoodPage() {
   const [filter, setFilter] = useState(filterChoice[0]);
   const [meals, setMeals] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [successOpen, setSuccessOpen] = useState(false);
+  const [errorOpen, setErrorOpen] = useState(false);
+
+  const handleSuccess = () => {
+    setSuccessOpen(true);
+  };
+
+  const handleError = () => {
+    setErrorOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSuccessOpen(false);
+    setErrorOpen(false);
+  };
 
   // Used to console log the data coming back from the api whenever the data does end up coming back
   // useEffect(() => {
@@ -66,6 +91,21 @@ function SearchFoodPage() {
       <Typography variant="h2" style={{ textAlign: "center" }}>
         Food Search 🍗
       </Typography>
+      <Snackbar
+        open={successOpen}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="success">
+          Your food was successfully saved
+        </Alert>
+      </Snackbar>
+
+      <Snackbar open={errorOpen} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error">
+          We're sorry, Your food could not be saved
+        </Alert>
+      </Snackbar>
       <Grid
         container
         alignContent="center"
@@ -114,6 +154,8 @@ function SearchFoodPage() {
                 key={meals.indexOf(meal)}
                 {...meal}
                 userId={userId}
+                handleSuccess={handleSuccess}
+                handleError={handleError}
               />
             );
           })
