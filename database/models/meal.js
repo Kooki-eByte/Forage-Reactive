@@ -12,10 +12,7 @@ const MealSchema = new Schema({
   ],
   servings: Number,
   calories: Number,
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
+  user: String,
 });
 
 const Meal = mongoose.model("Meal", MealSchema);

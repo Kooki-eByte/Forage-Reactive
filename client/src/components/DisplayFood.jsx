@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function DisplayFood({ recipe }) {
+function DisplayFood({ recipe, userId }) {
   const {
     label: foodName,
     image,
@@ -61,8 +61,9 @@ function DisplayFood({ recipe }) {
       name: foodName,
       img: image,
       ingredients: ingredientLines,
-      servings: Math.ceil(calories),
-      calories: servings,
+      servings: servings,
+      calories: Math.ceil(calories),
+      user: userId,
     };
     // async function to call the create method to save to the specific meal. Give it the meals info and the specific category.
     await API.saveFood(foodData)

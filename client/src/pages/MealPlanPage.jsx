@@ -12,8 +12,15 @@ function MealPlanPage() {
     return values;
   }
 
-  const user = getUserName();
+  function getUserId() {
+    let userId = JSON.parse(localStorage.getItem("userInfo"));
+    userId = userId._doc._id;
 
+    return userId;
+  }
+
+  const user = getUserName();
+  const userId = getUserId();
   return (
     <React.Fragment>
       <NavTabs user={user} />
