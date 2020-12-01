@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DisplayMealPlan from "../components/DisplayMealPlan";
 import NavTabs from "../components/NavBar";
+import API from "../utils/API";
 
 function MealPlanPage() {
   const [foodData, setFoodData] = useState([]);
@@ -34,6 +35,15 @@ function MealPlanPage() {
       .catch((err) => console.log(err));
   }
 
+  async function getMealsByType(userId, type) {
+    await API.getMealByType(userId, type)
+      .then((res) => {
+        const data = res.data;
+        setFoodData(data);
+      })
+      .catch((err) => console.log(err));
+  }
+
   useEffect(() => {
     getMeals();
   }, []);
@@ -57,7 +67,7 @@ function MealPlanPage() {
         <Grid item xs={6} sm={6} md={3} lg={3}>
           <Button
             onClick={() => {
-              alert("Breakfast");
+              getMealsByType(userId, "breakfast");
             }}
           >
             Breakfast
@@ -66,7 +76,7 @@ function MealPlanPage() {
         <Grid item xs={6} sm={6} md={3} lg={3}>
           <Button
             onClick={() => {
-              alert("Lunch");
+              getMealsByType(userId, "lunch");
             }}
           >
             Lunch
@@ -75,7 +85,7 @@ function MealPlanPage() {
         <Grid item xs={6} sm={6} md={3} lg={3}>
           <Button
             onClick={() => {
-              alert("Dinner");
+              getMealsByType(userId, "dinner");
             }}
           >
             Dinner
@@ -84,7 +94,7 @@ function MealPlanPage() {
         <Grid item xs={6} sm={6} md={3} lg={3}>
           <Button
             onClick={() => {
-              alert("Snack");
+              getMealsByType(userId, "snack");
             }}
           >
             Snack

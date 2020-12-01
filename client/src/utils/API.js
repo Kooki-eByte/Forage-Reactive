@@ -2,12 +2,8 @@ import axios from "axios";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  getFoods: function () {
-    return axios.get("/api/foods");
-  },
-
-  getFood: function (id) {
-    return axios.get("/api/foods/" + id);
+  getMealByType: function (id, type) {
+    return axios.get(`/api/meals/${id}/${type}`);
   },
 
   getAPIFood: function (diet, food) {
