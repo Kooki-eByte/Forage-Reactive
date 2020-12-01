@@ -17,6 +17,7 @@ import { AuthContext } from "../context/AuthContext";
 import API from "../utils/user-api";
 import FormError from "./../components/FormError";
 import FormSuccess from "./../components/FormSuccess";
+import AppAppBar from '../views/AppAppBar';
 
 function Copyright() {
   return (
@@ -91,6 +92,7 @@ export default function SignIn() {
 
   return (
     <>
+     <AppAppBar/>
       {redirectOnSignIn && <Redirect to={`/${email}`} />}
       <Container component="main" maxWidth="xs">
         <CssBaseline />

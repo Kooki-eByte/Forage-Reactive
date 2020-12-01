@@ -14,6 +14,7 @@ import { Field, Form, Formik } from "formik";
 import { fieldToTextField, TextField } from "formik-material-ui";
 import React from "react";
 import API from "../utils/user-api";
+import AppAppBar from '../views/AppAppBar';
 
 function Copyright() {
   return (
@@ -72,89 +73,92 @@ export default function SignUp() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
+    <>
+      <AppAppBar />
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
         </Typography>
-        <Formik
-          initialValues={{
-            username: "",
-            email: "",
-            password: "",
-          }}
-          validate={(values) => {
-            const errors = {};
-            if (!values.email) {
-              errors.email = "Required";
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-            ) {
-              errors.email = "Invalid email address";
-            }
-            return errors;
-          }}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              setSubmitting(false);
-              // values sends a object of the username, email, and password
-              console.log(values);
-              postUser(values);
-              // alert(JSON.stringify(values, null, 2));
-            }, 500);
-          }}
-        >
-          {({ submitForm, isSubmitting }) => (
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <Form>
-                <Box margin={1}>
-                  <Field
-                    component={TextField}
-                    type="username"
-                    label="username"
-                    name="username"
-                  />
-                </Box>
-                <Box margin={1}>
-                  <Field
-                    component={UpperCasingTextField}
-                    name="email"
-                    type="email"
-                    label="Email"
-                    helperText="Please Enter Email"
-                  />
-                </Box>
-                <Box margin={1}>
-                  <Field
-                    component={TextField}
-                    type="password"
-                    label="Password"
-                    name="password"
-                  />
-                </Box>
-                {isSubmitting && <LinearProgress />}
-                <Box margin={1}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    disabled={isSubmitting}
-                    onClick={submitForm}
-                  >
-                    Submit
+          <Formik
+            initialValues={{
+              username: "",
+              email: "",
+              password: "",
+            }}
+            validate={(values) => {
+              const errors = {};
+              if (!values.email) {
+                errors.email = "Required";
+              } else if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+              ) {
+                errors.email = "Invalid email address";
+              }
+              return errors;
+            }}
+            onSubmit={(values, { setSubmitting }) => {
+              setTimeout(() => {
+                setSubmitting(false);
+                // values sends a object of the username, email, and password
+                console.log(values);
+                postUser(values);
+                // alert(JSON.stringify(values, null, 2));
+              }, 500);
+            }}
+          >
+            {({ submitForm, isSubmitting }) => (
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Form>
+                  <Box margin={1}>
+                    <Field
+                      component={TextField}
+                      type="username"
+                      label="username"
+                      name="username"
+                    />
+                  </Box>
+                  <Box margin={1}>
+                    <Field
+                      component={UpperCasingTextField}
+                      name="email"
+                      type="email"
+                      label="Email"
+                      helperText="Please Enter Email"
+                    />
+                  </Box>
+                  <Box margin={1}>
+                    <Field
+                      component={TextField}
+                      type="password"
+                      label="Password"
+                      name="password"
+                    />
+                  </Box>
+                  {isSubmitting && <LinearProgress />}
+                  <Box margin={1}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      disabled={isSubmitting}
+                      onClick={submitForm}
+                    >
+                      Submit
                   </Button>
-                </Box>
-              </Form>
-            </MuiPickersUtilsProvider>
-          )}
-        </Formik>
-      </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
-    </Container>
+                  </Box>
+                </Form>
+              </MuiPickersUtilsProvider>
+            )}
+          </Formik>
+        </div>
+        <Box mt={5}>
+          <Copyright />
+        </Box>
+      </Container>
+    </>
   );
 }
