@@ -43,6 +43,7 @@ export default function DisplayMealPlan({
   calories,
   servings,
   ingredients,
+  type,
 }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -63,6 +64,8 @@ export default function DisplayMealPlan({
             The Servings for {name} is : {servings}.
           </Typography>
         </CardContent>
+        You foraged this as a : {type}
+        <br />
         Ingredients:
         <CardActions disableSpacing>
           <IconButton
