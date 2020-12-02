@@ -49,8 +49,9 @@
 
 - [Nutrition-Calculator](https://github.com/vincy-code/Nutrition-Calculator)  
 
+- Authentication help from:
 
-
+- Dan Kaltenbaugh
 
 ## Questions <a name="questions"></a>
 
