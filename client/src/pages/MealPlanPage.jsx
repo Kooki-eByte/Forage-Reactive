@@ -67,6 +67,15 @@ function MealPlanPage() {
         <Grid item xs={6} sm={6} md={3} lg={3}>
           <Button
             onClick={() => {
+              getMeals();
+            }}
+          >
+            View All
+          </Button>
+        </Grid>
+        <Grid item xs={6} sm={6} md={3} lg={3}>
+          <Button
+            onClick={() => {
               getMealsByType(userId, "breakfast");
             }}
           >
