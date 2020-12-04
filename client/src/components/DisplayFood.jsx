@@ -20,8 +20,7 @@ import API from "../utils/API";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    marginTop: "5px",
-    marginBottom: "5px",
+    margin: "10px",
   },
   media: {
     height: 0,
@@ -80,78 +79,76 @@ function DisplayFood({ recipe, userId, handleSuccess, handleError, pageSent }) {
   }
 
   return (
-    <React.Fragment>
-      <Grid item xs={12} sm={6} md={4} lg={3}>
-        <Card className={classes.root}>
-          <CardHeader title={foodName} />
-          <CardMedia className={classes.media} image={image} title={foodName} />
+    <Grid item>
+      <Card className={classes.root}>
+        <CardHeader title={foodName} />
+        <CardMedia className={classes.media} image={image} title={foodName} />
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            The Calories for {foodName} is : {Math.ceil(calories)}.
+            <Divider />
+            The Servings for {foodName} is : {servings}.
+          </Typography>
+        </CardContent>
+        Click to save to a category:
+        <CardActions disableSpacing>
+          <Fab
+            style={{ fontSize: "20px", margin: "2px" }}
+            color="primary"
+            aria-label="breakfast"
+            onClick={() => handleSaveFood("breakfast")}
+          >
+            B
+          </Fab>
+          <Fab
+            style={{ fontSize: "20px", margin: "2px" }}
+            color="primary"
+            aria-label="lunch"
+            onClick={() => handleSaveFood("lunch")}
+          >
+            L
+          </Fab>
+          <Fab
+            style={{ fontSize: "20px", margin: "2px" }}
+            color="primary"
+            aria-label="dinner"
+            onClick={() => handleSaveFood("dinner")}
+          >
+            D
+          </Fab>
+          <Fab
+            style={{ fontSize: "20px", margin: "2px" }}
+            color="primary"
+            aria-label="snack"
+            onClick={() => handleSaveFood("snack")}
+          >
+            S
+          </Fab>
+          <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded,
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
-              The Calories for {foodName} is : {Math.ceil(calories)}.
-              <Divider />
-              The Servings for {foodName} is : {servings}.
+            <Typography paragraph>Ingredients:</Typography>
+            <Typography paragraph>
+              <ul>
+                {ingredientLines.map((ingredient) => (
+                  <li>{ingredient}</li>
+                ))}
+              </ul>
             </Typography>
           </CardContent>
-          Click to save to a category:
-          <CardActions disableSpacing>
-            <Fab
-              style={{ fontSize: "20px", margin: "2px" }}
-              color="primary"
-              aria-label="breakfast"
-              onClick={() => handleSaveFood("breakfast")}
-            >
-              B
-            </Fab>
-            <Fab
-              style={{ fontSize: "20px", margin: "2px" }}
-              color="primary"
-              aria-label="lunch"
-              onClick={() => handleSaveFood("lunch")}
-            >
-              L
-            </Fab>
-            <Fab
-              style={{ fontSize: "20px", margin: "2px" }}
-              color="primary"
-              aria-label="dinner"
-              onClick={() => handleSaveFood("dinner")}
-            >
-              D
-            </Fab>
-            <Fab
-              style={{ fontSize: "20px", margin: "2px" }}
-              color="primary"
-              aria-label="snack"
-              onClick={() => handleSaveFood("snack")}
-            >
-              S
-            </Fab>
-            <IconButton
-              className={clsx(classes.expand, {
-                [classes.expandOpen]: expanded,
-              })}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
-            >
-              <ExpandMoreIcon />
-            </IconButton>
-          </CardActions>
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-              <Typography paragraph>Ingredients:</Typography>
-              <Typography paragraph>
-                <ul>
-                  {ingredientLines.map((ingredient) => (
-                    <li>{ingredient}</li>
-                  ))}
-                </ul>
-              </Typography>
-            </CardContent>
-          </Collapse>
-        </Card>
-      </Grid>
-    </React.Fragment>
+        </Collapse>
+      </Card>
+    </Grid>
   );
 }
 
