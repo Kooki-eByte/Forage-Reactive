@@ -53,7 +53,7 @@ export default function DisplayMealPlan({
   };
 
   return (
-    <Grid item xs={12} sm={6} md={4} lg={3}>
+    <Grid item>
       <Card className={classes.root}>
         <CardHeader title={name} />
         <CardMedia className={classes.media} image={img} title={name} />
