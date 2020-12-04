@@ -6,7 +6,7 @@ import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 import HomeBackgroundImage from '../images/jakub-kapusnak-sDbj1dFlFPU-unsplash.jpg';
 import LargeForageIcon from '../images/Orgtrans.png';
-import { NavLink } from "react-router-dom";
+import {NavLink} from 'react-router-dom';
 import { Container, Grid } from '@material-ui/core';
 
 const styles = (theme) => ({
