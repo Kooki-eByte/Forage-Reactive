@@ -1,14 +1,11 @@
-import { CardContent, Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
-import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import KitchenIcon from "@material-ui/icons/Kitchen";
 import React from "react";
-import NavTabs from "../components/NavBar";
-import UsersCard from "../components/UsersCard";
-import SearchFoodCard from "../components/SearchFoodCard";
-import MealPlanCard from "../components/MealPlanCard";
 import CalorieCalculatorCard from "../components/CalorieCalculatorCard";
+import MealPlanCard from "../components/MealPlanCard";
+import NavTabs from "../components/NavBar";
+import SearchFoodCard from "../components/SearchFoodCard";
 
 const useStyles = makeStyles({
   containerInfo: {
@@ -47,15 +44,20 @@ function UserPage() {
       <Typography variant="h6" style={{ textAlign: "center" }}>
         Hello, {user}
       </Typography>
-      <Grid container className={classes.containerInfo} justify="center" align="center">
+      <Grid
+        container
+        className={classes.containerInfo}
+        justify="center"
+        align="center"
+      >
         <Grid item xs={12} sm={6} md={4} lg={3} className={classes.userCard}>
           <CalorieCalculatorCard></CalorieCalculatorCard>
           {/* <UsersCard user={user} /> */}
         </Grid>
-        <Grid item xs={12} sm={4} md={4} lg={3} className={classes.userCard}>
+        <Grid item xs={12} sm={6} md={4} lg={3} className={classes.userCard}>
           <SearchFoodCard>
             <KitchenIcon style={{ fontSize: 75 }}></KitchenIcon>
-          {/* <CardContent className={classes.userCard}>
+            {/* <CardContent className={classes.userCard}>
             <KitchenIcon style={{ fontSize: 75 }} />
             <br />
             <Typography>
@@ -65,18 +67,18 @@ function UserPage() {
               breakfast, lunch, dinner, or even snack.
             </Typography>
           </CardContent> */}
-         </SearchFoodCard>
+          </SearchFoodCard>
         </Grid>
-        <Grid item xs={12} sm={4} md={4} lg={3} className={classes.userCard}>
-         <MealPlanCard>
-          {/* <CardContent className={classes.userCard}>
+        <Grid item xs={12} sm={6} md={4} lg={3} className={classes.userCard}>
+          <MealPlanCard>
+            {/* <CardContent className={classes.userCard}>
             <FavoriteBorderOutlinedIcon style={{ fontSize: 75 }} />
             <br />
             <Typography>
               This is the <strong>Meal Plan</strong> Icon. On this page you can select a Meal type and display your saved meals and recipes.
             </Typography>
           </CardContent> */}
-         </MealPlanCard>
+          </MealPlanCard>
         </Grid>
         {/* <Grid item xs={12} sm={4} md={4} lg={3}>
           <CardContent className={classes.userCard}>

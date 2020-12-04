@@ -85,6 +85,51 @@ function SearchFoodPage() {
     setFilter(event.target.value);
   };
 
+  const SearchBar = () => {
+    return (
+      <Grid
+        container
+        alignItems="center"
+        justify="center"
+        alignContent="center"
+      >
+        <FormGroup row={true}>
+          <TextField
+            id="food-filter"
+            select
+            label="Filter"
+            value={filter}
+            onChange={handleChange}
+            helperText="Please select your filter"
+            margin="dense"
+          >
+            {filterChoice.map((option) => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            id="outlined-basic"
+            label="Search Food Here"
+            variant="outlined"
+            margin="dense"
+            value={inputValue}
+            onChange={(event) => setInputValue(event.target.value)}
+            size="small"
+          />
+          <Button
+            onClick={() => {
+              getFood(filter, inputValue);
+            }}
+          >
+            Forage
+          </Button>
+        </FormGroup>
+      </Grid>
+    );
+  };
+
   return (
     <React.Fragment>
       <NavTabs user={user} />
@@ -106,46 +151,15 @@ function SearchFoodPage() {
           We're sorry, Your food could not be saved
         </Alert>
       </Snackbar>
+
       <Grid
         container
         alignContent="center"
-        justify="space-around"
-        alignItems="baseline"
+        justify="center"
+        alignItems="center"
       >
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <FormGroup row={true}>
-            <TextField
-              id="food-filter"
-              select
-              label="Filter"
-              value={filter}
-              onChange={handleChange}
-              helperText="Please select your filter"
-              margin="dense"
-            >
-              {filterChoice.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
-                </MenuItem>
-              ))}
-            </TextField>
-            <TextField
-              id="outlined-basic"
-              label="Search Food Here"
-              variant="outlined"
-              margin="dense"
-              value={inputValue}
-              onChange={(event) => setInputValue(event.target.value)}
-              style={{ width: "50%" }}
-            />
-            <Button
-              onClick={() => {
-                getFood(filter, inputValue);
-              }}
-            >
-              Forage
-            </Button>
-          </FormGroup>
+          <SearchBar />
         </Grid>
         {meals ? (
           meals.map((meal) => {
