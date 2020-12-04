@@ -14,7 +14,7 @@ import { Field, Form, Formik } from "formik";
 import { fieldToTextField, TextField } from "formik-material-ui";
 import React from "react";
 import API from "../utils/user-api";
-import AppAppBar from '../views/AppAppBar';
+import AppAppBar from "../views/AppAppBar";
 
 function Copyright() {
   return (
@@ -42,7 +42,7 @@ async function postUser(user) {
   await API.createUser(user)
     .then((res) => {
       let currentUrl = window.location.origin;
-      window.location.href = `${currentUrl}/`;
+      window.location.href = `${currentUrl}/loginPage`;
     })
     .catch((err) => {
       console.log(err);
@@ -83,7 +83,7 @@ export default function SignUp() {
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
-        </Typography>
+          </Typography>
           <Formik
             initialValues={{
               username: "",
@@ -148,7 +148,7 @@ export default function SignUp() {
                       onClick={submitForm}
                     >
                       Submit
-                  </Button>
+                    </Button>
                   </Box>
                 </Form>
               </MuiPickersUtilsProvider>

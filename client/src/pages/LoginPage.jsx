@@ -15,9 +15,9 @@ import React, { useContext, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import API from "../utils/user-api";
+import AppAppBar from "../views/AppAppBar";
 import FormError from "./../components/FormError";
 import FormSuccess from "./../components/FormSuccess";
-import AppAppBar from '../views/AppAppBar';
 
 function Copyright() {
   return (
@@ -79,7 +79,8 @@ export default function SignIn() {
     } catch (error) {
       setSignInLoading(false);
       const data = error.response;
-      setSignInError(error.message);
+      const dataError = data.data;
+      setSignInError(dataError.message);
       setSignInSuccess(null);
     }
   };
@@ -92,7 +93,7 @@ export default function SignIn() {
 
   return (
     <>
-     <AppAppBar/>
+      <AppAppBar />
       {redirectOnSignIn && <Redirect to={`/${email}`} />}
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -101,7 +102,7 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Login
           </Typography>
           {signInSuccess && <FormSuccess text={signInSuccess} />}
           {signInError && <FormError text={signInError} />}
@@ -147,7 +148,7 @@ export default function SignIn() {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              Login
             </Button>
             <Grid container>
               <Grid item xs>
