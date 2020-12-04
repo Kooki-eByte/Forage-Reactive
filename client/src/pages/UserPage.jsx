@@ -6,16 +6,19 @@ import KitchenIcon from "@material-ui/icons/Kitchen";
 import React from "react";
 import NavTabs from "../components/NavBar";
 import UsersCard from "../components/UsersCard";
+import SearchFoodCard from "../components/SearchFoodCard";
+import MealPlanCard from "../components/MealPlanCard";
+import CalorieCalculatorCard from "../components/CalorieCalculatorCard";
 
 const useStyles = makeStyles({
   containerInfo: {
     paddingTop: "20px",
-    paddingLeft: "75px",
-    paddingRight: "50px",
+    paddingLeft: "20px",
+    paddingRight: "20px",
+    paddingBotton: "20px",
   },
   userCard: {
     margin: "5px",
-    backgroundColor: "#232b2b",
     textAlign: "center",
     color: "white",
     borderRadius: "25%",
@@ -41,15 +44,18 @@ function UserPage() {
   return (
     <React.Fragment>
       <NavTabs user={user} />
-      <Typography variant="h2" style={{ textAlign: "center" }}>
+      <Typography variant="h6" style={{ textAlign: "center" }}>
         Hello, {user}
       </Typography>
-      <Grid container className={classes.containerInfo}>
-        <Grid item xs={12} sm={6} md={4} lg={3}>
-          <UsersCard user={user} />
+      <Grid container className={classes.containerInfo} justify="center" align="center">
+        <Grid item xs={12} sm={6} md={4} lg={3} className={classes.userCard}>
+          <CalorieCalculatorCard></CalorieCalculatorCard>
+          {/* <UsersCard user={user} /> */}
         </Grid>
-        <Grid item xs={12} sm={4} md={4} lg={3}>
-          <CardContent className={classes.userCard}>
+        <Grid item xs={12} sm={4} md={4} lg={3} className={classes.userCard}>
+          <SearchFoodCard>
+            <KitchenIcon style={{ fontSize: 75 }}></KitchenIcon>
+          {/* <CardContent className={classes.userCard}>
             <KitchenIcon style={{ fontSize: 75 }} />
             <br />
             <Typography>
@@ -58,18 +64,21 @@ function UserPage() {
               the search bar. Then you are able to either store the food in
               breakfast, lunch, dinner, or even snack.
             </Typography>
-          </CardContent>
+          </CardContent> */}
+         </SearchFoodCard>
         </Grid>
-        <Grid item xs={12} sm={4} md={4} lg={3}>
-          <CardContent className={classes.userCard}>
+        <Grid item xs={12} sm={4} md={4} lg={3} className={classes.userCard}>
+         <MealPlanCard>
+          {/* <CardContent className={classes.userCard}>
             <FavoriteBorderOutlinedIcon style={{ fontSize: 75 }} />
             <br />
             <Typography>
               This is the <strong>Meal Plan</strong> Icon. On this page you can select a Meal type and display your saved meals and recipes.
             </Typography>
-          </CardContent>
+          </CardContent> */}
+         </MealPlanCard>
         </Grid>
-        <Grid item xs={12} sm={4} md={4} lg={3}>
+        {/* <Grid item xs={12} sm={4} md={4} lg={3}>
           <CardContent className={classes.userCard}>
             <AccountCircleOutlinedIcon style={{ fontSize: 75 }} />
             <br />
@@ -77,7 +86,7 @@ function UserPage() {
               This is the <strong>User</strong> Icon. This is your personal user page where you will see your calorie needs, and other information.
             </Typography>
           </CardContent>
-        </Grid>
+        </Grid> */}
         {/* - TODO : Have a card for calorie calc */}
 
         {/* - TODO : Have a chart for food that is being stored */}
