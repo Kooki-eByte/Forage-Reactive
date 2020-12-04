@@ -1,13 +1,13 @@
+import Box from "@material-ui/core/Box";
 import Link from "@material-ui/core/Link";
 import { withStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import { NavLink } from "react-router-dom";
 import AppBar from "../components/AppBar";
 import Toolbar, { styles as toolbarStyles } from "../components/Toolbar";
 import MiniForageImage from "../images/Forage.png";
-import Box from "@material-ui/core/Box";
-import { NavLink } from "react-router-dom";
 
 const styles = (theme) => ({
   title: {
@@ -36,13 +36,13 @@ const styles = (theme) => ({
     marginRight: theme.spacing(3),
     display: "flex",
     justifyContent: "flex-end",
-    whiteSpace: "nowrap"
+    whiteSpace: "nowrap",
   },
   linkSecondary: {
     color: theme.palette.secondary.main,
   },
   miniForage: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
 });
 
@@ -61,42 +61,49 @@ function AppAppBar(props) {
               alt="Forage icon"
             />
             <Link
-            variant="h6"
-            underline="none"
-            color="inherit"
-            className={classes.title}
-            href="/"
-          >
-            {"Forage"}
-          </Link>
+              variant="h6"
+              underline="none"
+              color="inherit"
+              className={classes.title}
+              href="/"
+            >
+              {"Forage"}
+            </Link>
           </Box>
 
-          
           <div className={classes.right}>
-          <NavLink to="/loginPage" className=
-                {window.location.pathname === "/loginPage"
+            <NavLink
+              to="/loginPage"
+              className={
+                window.location.pathname === "/loginPage"
                   ? "nav-link active"
-                  : "nav-link"}>
-            <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              className={classes.rightLink}
+                  : "nav-link"
+              }
             >
-              {"Sign In"}
-            </Link>
+              <Link
+                color="inherit"
+                variant="h6"
+                underline="none"
+                className={classes.rightLink}
+              >
+                {"Login"}
+              </Link>
             </NavLink>
-            <NavLink to="/signUpPage" className=
-                {window.location.pathname === "/signUpPage"
+            <NavLink
+              to="/signUpPage"
+              className={
+                window.location.pathname === "/signUpPage"
                   ? "nav-link active"
-                  : "nav-link"}>
-            <Link
-              variant="h6"
-              underline="none"
-              className={clsx(classes.rightLink, classes.linkSecondary)}
+                  : "nav-link"
+              }
             >
-              {"Sign Up"}
-            </Link>
+              <Link
+                variant="h6"
+                underline="none"
+                className={clsx(classes.rightLink, classes.linkSecondary)}
+              >
+                {"Sign Up"}
+              </Link>
             </NavLink>
           </div>
         </Toolbar>
