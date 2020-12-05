@@ -64,47 +64,52 @@ function MealPlanPage() {
         justify="space-around"
         style={{ textAlign: "center" }}
       >
-        <Grid item xs={6} sm={6} md={3} lg={3}>
+        <Grid item xs={12} sm={12} md={2} lg={2}>
           <Button
             onClick={() => {
               getMeals();
             }}
+            style={{ backgroundColor: "#D3D3D3", margin: "3px" }}
           >
             View All
           </Button>
         </Grid>
-        <Grid item xs={6} sm={6} md={3} lg={3}>
+        <Grid item xs={6} sm={6} md={2} lg={2}>
           <Button
             onClick={() => {
               getMealsByType(userId, "breakfast");
             }}
+            style={{ backgroundColor: "#D3D3D3", margin: "3px" }}
           >
             Breakfast
           </Button>
         </Grid>
-        <Grid item xs={6} sm={6} md={3} lg={3}>
+        <Grid item xs={6} sm={6} md={2} lg={3}>
           <Button
             onClick={() => {
               getMealsByType(userId, "lunch");
             }}
+            style={{ backgroundColor: "#D3D3D3", margin: "3px" }}
           >
             Lunch
           </Button>
         </Grid>
-        <Grid item xs={6} sm={6} md={3} lg={3}>
+        <Grid item xs={6} sm={6} md={2} lg={2}>
           <Button
             onClick={() => {
               getMealsByType(userId, "dinner");
             }}
+            style={{ backgroundColor: "#D3D3D3", margin: "3px" }}
           >
             Dinner
           </Button>
         </Grid>
-        <Grid item xs={6} sm={6} md={3} lg={3}>
+        <Grid item xs={6} sm={6} md={2} lg={2}>
           <Button
             onClick={() => {
               getMealsByType(userId, "snack");
             }}
+            style={{ backgroundColor: "#D3D3D3", margin: "3px" }}
           >
             Snack
           </Button>
