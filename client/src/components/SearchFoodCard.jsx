@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     maxWidth: 690,
   },
   media: {
-    height: 280,
+    height: 330,
   },
 });
 
@@ -39,7 +39,7 @@ export default function MediaCard() {
             Food Search
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            This is the food search tool that is used to build your meal plans and look up recipes
+            This will take you to the food search tool that is used to build your meal plans and look up recipes
           </Typography>
         </CardContent>
       </CardActionArea>
