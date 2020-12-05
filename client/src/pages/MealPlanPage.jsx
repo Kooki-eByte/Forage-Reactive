@@ -1,4 +1,5 @@
 import { Button, Grid, Typography } from "@material-ui/core";
+import Box from '@material-ui/core/Box';
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DisplayMealPlan from "../components/DisplayMealPlan";
@@ -55,9 +56,11 @@ function MealPlanPage() {
   return (
     <React.Fragment>
       <NavTabs user={user} />
-      <Typography variant="h2" style={{ textAlign: "center" }}>
-        Your Meal Plan 🗓
+      <Box m={6}>
+        <Typography variant="h2" style={{ textAlign: "center" }}>
+          Your Meal Plan 🗓
       </Typography>
+      </Box>
       <Grid
         container
         alignContent="center"
@@ -114,16 +117,24 @@ function MealPlanPage() {
             Snack
           </Button>
         </Grid>
+      </Grid>
+      <Box m={10}></Box>
+      <Grid
+        container
+        alignContent="center"
+        justify="space-around"
+        style={{ textAlign: "center" }}
+      >
         {foodData ? (
           foodData.map((food) => {
             return <DisplayMealPlan key={foodData.indexOf(food)} {...food} />;
           })
         ) : (
-          <h3>
-            No foods to display, Go check out the food search to forage for
-            some.
-          </h3>
-        )}
+            <h3>
+              No foods to display, Go check out the food search to forage for
+              some.
+            </h3>
+          )}
       </Grid>
     </React.Fragment>
   );
