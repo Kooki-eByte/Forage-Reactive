@@ -1,11 +1,11 @@
 import {
+  Box,
   Button,
   FormGroup,
   Grid,
   MenuItem,
   TextField,
   Typography,
-  Box,
 } from "@material-ui/core";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
@@ -93,7 +93,7 @@ function SearchFoodPage() {
       <Box m={6}>
         <Typography variant="h2" style={{ textAlign: "center" }}>
           Food Search 🍗
-      </Typography>
+        </Typography>
       </Box>
       <Snackbar
         open={successOpen}
@@ -146,7 +146,7 @@ function SearchFoodPage() {
                 variant="outlined"
                 margin="dense"
                 value={inputValue}
-                onChange={(event) => setInputValue(event.target.value.trim())}
+                onChange={(event) => setInputValue(event.target.value)}
                 size="small"
                 style={{ width: "45%" }}
               />
@@ -180,8 +180,8 @@ function SearchFoodPage() {
               );
             })
           ) : (
-              <h3>No foods to display</h3>
-            )}
+            <h3>No foods to display</h3>
+          )}
         </Grid>
       </Grid>
     </React.Fragment>
