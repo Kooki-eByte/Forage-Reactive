@@ -42,7 +42,7 @@ async function postUser(user) {
   await API.createUser(user)
     .then((res) => {
       let currentUrl = window.location.origin;
-      window.location.href = `${currentUrl}/loginPage`;
+      window.location.href = `${currentUrl}/`;
     })
     .catch((err) => {
       console.log(err);
