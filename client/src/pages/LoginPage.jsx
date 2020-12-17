@@ -156,6 +156,7 @@ export default function SignIn() {
                   Forgot password?
                 </Link>
               </Grid>
+              <Box mr={10}></Box>
               <Grid item>
                 <Link to="/signUpPage" variant="body2">
                   {"Don't have an account? Sign Up"}
