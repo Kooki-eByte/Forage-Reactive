@@ -6,7 +6,7 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -151,7 +151,7 @@ export default function SignIn() {
               Login
             </Button>
             <Grid container>
-              <Grid item xs>
+              <Grid item>
                 <Link to="/reset_password" variant="body2">
                   Forgot password?
                 </Link>
